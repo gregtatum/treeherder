@@ -18,34 +18,19 @@ import { thEvents } from '../../../helpers/constants';
 import { notify } from './notifications';
 import { setSelectedJob } from './selectedJob';
 
-const LOADING = 'LOADING';
-const ADD_PUSHES = 'ADD_PUSHES';
-const CLEAR_PUSHES = 'CLEAR_PUSHES';
-const SET_PUSHES = 'SET_PUSHES';
-const RECALCULATE_UNCLASSIFIED_COUNTS = 'RECALCULATE_UNCLASSIFIED_COUNTS';
-const UPDATE_JOB_MAP = 'UPDATE_JOB_MAP';
+export const LOADING = 'LOADING';
+export const ADD_PUSHES = 'ADD_PUSHES';
+export const CLEAR_PUSHES = 'CLEAR_PUSHES';
+export const SET_PUSHES = 'SET_PUSHES';
+export const RECALCULATE_UNCLASSIFIED_COUNTS =
+  'RECALCULATE_UNCLASSIFIED_COUNTS';
+export const UPDATE_JOB_MAP = 'UPDATE_JOB_MAP';
 
 const DEFAULT_PUSH_COUNT = 10;
 // Keys that, if present on the url, must be passed into the push
 // polling endpoint
 const PUSH_POLLING_KEYS = ['tochange', 'enddate', 'revision', 'author'];
 const PUSH_FETCH_KEYS = [...PUSH_POLLING_KEYS, 'fromchange', 'startdate'];
-
-export const clearPushes = () => ({ type: CLEAR_PUSHES });
-export const setPushes = (pushList, jobMap) => ({
-  type: SET_PUSHES,
-  pushResults: { pushList, jobMap },
-});
-
-export const recalculateUnclassifiedCounts = filterModel => ({
-  type: RECALCULATE_UNCLASSIFIED_COUNTS,
-  filterModel,
-});
-
-export const updateJobMap = jobs => ({
-  type: UPDATE_JOB_MAP,
-  jobs,
-});
 
 const getRevisionTips = pushList => {
   return {
@@ -128,56 +113,6 @@ const addPushes = (data, pushList, jobMap, setFromchange) => {
   return {};
 };
 
-export const fetchPushes = (
-  count = DEFAULT_PUSH_COUNT,
-  setFromchange = false,
-) => {
-  return (dispatch, getState) => {
-    const {
-      pushes: { pushList, jobMap, oldestPushTimestamp },
-    } = getState();
-
-    dispatch({ type: LOADING });
-
-    // Only pass supported query string params to this endpoint.
-    const options = {
-      ...pick(parseQueryParams(getQueryString()), PUSH_FETCH_KEYS),
-    };
-
-    if (oldestPushTimestamp) {
-      // If we have an oldestTimestamp, then this isn't our first fetch,
-      // we're fetching more pushes.  We don't want to limit this fetch
-      // by the current ``fromchange`` or ``tochange`` value.  Deleting
-      // these params here do not affect the params on the location bar.
-      delete options.fromchange;
-      delete options.tochange;
-      options.push_timestamp__lte = oldestPushTimestamp;
-    }
-    if (!options.fromchange) {
-      options.count = count;
-    }
-
-    PushModel.getList(options).then(({ data, failureStatus }) => {
-      if (!failureStatus) {
-        return dispatch({
-          type: ADD_PUSHES,
-          pushResults: addPushes(
-            data.results.length ? data : { results: [] },
-            pushList,
-            jobMap,
-            setFromchange,
-          ),
-        });
-      }
-      dispatch(
-        notify('Error retrieving push data!', 'danger', { sticky: true }),
-      );
-      return {};
-    });
-    return {};
-  };
-};
-
 const fetchNewJobs = () => {
   return (dispatch, getState) => {
     const {
@@ -185,7 +120,7 @@ const fetchNewJobs = () => {
     } = getState();
 
     if (!pushList.length) {
-      // If we have no pushes, then no need to poll for jobs.
+      // If we have no pushes, then no need to get jobs.
       return;
     }
 
@@ -225,6 +160,64 @@ const fetchNewJobs = () => {
         }
       }
     });
+  };
+};
+
+const doUpdateJobMap = (jobList, jobMap, pushList) => {
+  if (jobList.length) {
+    // lodash ``keyBy`` is significantly faster than doing a ``reduce``
+    return {
+      jobMap: { ...jobMap, ...keyBy(jobList, 'id') },
+      jobsLoaded: pushList.every(push => push.jobsLoaded),
+    };
+  }
+  return {};
+};
+
+export const fetchPushes = (
+  count = DEFAULT_PUSH_COUNT,
+  setFromchange = false,
+) => {
+  return async (dispatch, getState) => {
+    const {
+      pushes: { pushList, jobMap, oldestPushTimestamp },
+    } = getState();
+
+    dispatch({ type: LOADING });
+
+    // Only pass supported query string params to this endpoint.
+    const options = {
+      ...pick(parseQueryParams(getQueryString()), PUSH_FETCH_KEYS),
+    };
+
+    if (oldestPushTimestamp) {
+      // If we have an oldestTimestamp, then this isn't our first fetch,
+      // we're fetching more pushes.  We don't want to limit this fetch
+      // by the current ``fromchange`` or ``tochange`` value.  Deleting
+      // these params here do not affect the params on the location bar.
+      delete options.fromchange;
+      delete options.tochange;
+      options.push_timestamp__lte = oldestPushTimestamp;
+    }
+    if (!options.fromchange) {
+      options.count = count;
+    }
+
+    const { data, failureStatus } = await PushModel.getList(options);
+
+    if (!failureStatus) {
+      return dispatch({
+        type: ADD_PUSHES,
+        pushResults: addPushes(
+          data.results.length ? data : { results: [] },
+          pushList,
+          jobMap,
+          setFromchange,
+        ),
+      });
+    }
+    dispatch(notify('Error retrieving push data!', 'danger', { sticky: true }));
+    return {};
   };
 };
 
@@ -300,16 +293,22 @@ export const fetchNextPushes = count => {
   return fetchPushes(count, true);
 };
 
-const doUpdateJobMap = (jobList, jobMap, pushList) => {
-  if (jobList.length) {
-    // lodash ``keyBy`` is significantly faster than doing a ``reduce``
-    return {
-      jobMap: { ...jobMap, ...keyBy(jobList, 'id') },
-      jobsLoaded: pushList.every(push => push.jobsLoaded),
-    };
-  }
-  return {};
-};
+export const clearPushes = () => ({ type: CLEAR_PUSHES });
+
+export const setPushes = (pushList, jobMap) => ({
+  type: SET_PUSHES,
+  pushResults: { pushList, jobMap },
+});
+
+export const recalculateUnclassifiedCounts = filterModel => ({
+  type: RECALCULATE_UNCLASSIFIED_COUNTS,
+  filterModel,
+});
+
+export const updateJobMap = jobs => ({
+  type: UPDATE_JOB_MAP,
+  jobs,
+});
 
 export const updateRange = range => {
   return (dispatch, getState) => {
@@ -341,7 +340,7 @@ export const updateRange = range => {
   };
 };
 
-const initialState = {
+export const initialState = {
   pushList: [],
   jobMap: {},
   revisionTips: [],

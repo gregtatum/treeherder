@@ -1,22 +1,20 @@
 import React from 'react';
 import { fetchMock } from 'fetch-mock';
 import { Provider } from 'react-redux';
-import { render, cleanup, waitForElement } from '@testing-library/react/typings';
+import { render, cleanup, waitForElement } from '@testing-library/react';
 
-import { getProjectUrl } from '../../../../../ui/helpers/location';
-import { PushesClass } from '../../../../../ui/job-view/context/Pushes';
-import FilterModel from '../../../../../ui/models/filter';
-import pushListFixture from '../../../mock/push_list';
-import jobListFixtureOne from '../../../mock/job_list/job_1';
-import jobListFixtureTwo from '../../../mock/job_list/job_2';
-import { store } from '../../../../../ui/job-view/redux/store';
-import PushList from '../../../../../ui/job-view/pushes/PushList';
-import { PinnedJobs } from '../../../../../ui/job-view/context/PinnedJobs';
-import reducer from '../../../../../ui/job-view/redux/stores/pushes';
+import { getProjectUrl } from '../../../ui/helpers/location';
+import FilterModel from '../../../ui/models/filter';
+import pushListFixture from '../mock/push_list';
+import jobListFixtureOne from '../mock/job_list/job_1';
+import jobListFixtureTwo from '../mock/job_list/job_2';
+import { store } from '../../../ui/job-view/redux/store';
+import PushList from '../../../ui/job-view/pushes/PushList';
+import { PinnedJobs } from '../../../ui/job-view/context/PinnedJobs';
 
 afterEach(cleanup);
 
-describe('Pushes Redux store', () => {
+describe('PushList', () => {
   const repoName = 'autoland';
   beforeAll(() => {
     fetchMock.get(
@@ -38,25 +36,50 @@ describe('Pushes Redux store', () => {
     fetchMock.reset();
   });
 
+  const currentRepo = {
+    id: 4,
+    repository_group: {
+      name: 'development',
+      description: 'meh',
+    },
+    name: repoName,
+    dvcs_type: 'hg',
+    url: 'https://hg.mozilla.org/autoland',
+    branch: null,
+    codebase: 'gecko',
+    description: '',
+    active_status: 'active',
+    performance_alerts_enabled: false,
+    expire_performance_data: true,
+    is_try_repo: false,
+    pushLogUrl: 'https://hg.mozilla.org/autoland/pushloghtml',
+    revisionHrefPrefix: 'https://hg.mozilla.org/autoland/rev/',
+    getRevisionHref: () => {},
+  };
+  const testPushList = filterModel => (
+    <Provider store={store}>
+      <PinnedJobs>
+        <PushList
+          user={{ isLoggedIn: false }}
+          repoName={repoName}
+          currentRepo={currentRepo}
+          filterModel={filterModel}
+          duplicateJobsVisible={false}
+          groupCountsExpanded={false}
+          pushHealthVisibility="None"
+          getAllShownJobs={() => {}}
+        />
+      </PinnedJobs>
+    </Provider>
+  );
 
-  test('should have id of 1 in current repo', async () => {
-    const pushes = mount(
-      <PushesClass filterModel={new FilterModel()} notify={() => {}}>
-        <div />
-      </PushesClass>,
-    );
-    await pushes.instance().fetchPushes(10);
-    expect(pushes.state('pushList')[0].id).toBe(1);
+  test('should have 2 pushes', async () => {
+    const { getAllByText } = render(testPushList(new FilterModel()));
+    const pushes = await waitForElement(() => getAllByText('View Tests'));
+
+    expect(pushes).toHaveLength(2);
   });
 
-  // test('should add new push when polling', async () => {
-  //   // impl
-  // });
-  //
-  // test('should add new jobs when polling', async () => {
-  //   // impl
-  // });
-  //
   // test('should be able to select a job', async () => {
   //   // impl
   // });
@@ -96,58 +119,4 @@ describe('Pushes Redux store', () => {
   // test('switching repo should update count of unclassified', async () => {
   //   // impl
   // });
-});
-
-describe('pushes store', () => {
-  test('should return the initial state', () => {
-    expect(reducer(undefined, {})).toEqual([
-      {
-        text: 'Use Redux',
-        completed: false,
-        id: 0,
-      },
-    ]);
-  });
-
-  test('should handle ADD_TODO', () => {
-    expect(
-      reducer([], {
-        type: types.ADD_TODO,
-        text: 'Run the tests',
-      }),
-    ).toEqual([
-      {
-        text: 'Run the tests',
-        completed: false,
-        id: 0,
-      },
-    ]);
-
-    expect(
-      reducer(
-        [
-          {
-            text: 'Use Redux',
-            completed: false,
-            id: 0,
-          },
-        ],
-        {
-          type: types.ADD_TODO,
-          text: 'Run the tests',
-        },
-      ),
-    ).toEqual([
-      {
-        text: 'Run the tests',
-        completed: false,
-        id: 1,
-      },
-      {
-        text: 'Use Redux',
-        completed: false,
-        id: 0,
-      },
-    ]);
-  });
 });
