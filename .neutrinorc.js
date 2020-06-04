@@ -24,6 +24,12 @@ module.exports = {
         title: 'Treeherder Logviewer',
         template: 'ui/index.html',
       },
+      logviewer2: {
+        entry: 'logviewer2/index.jsx',
+        favicon: 'ui/img/logviewerIcon.png',
+        title: 'Treeherder Logviewer2',
+        template: 'ui/index.html',
+      },
       userguide: {
         entry: 'userguide/index.jsx',
         favicon: 'ui/img/tree_open.png',
