@@ -1,0 +1,1293 @@
+/*
+ * Treeherder Base settings
+ *
+ * This file contains settings which are either not specific to our
+ * UI component css files, or are shared across Treeherder, Logviewer,
+ * UserGuide, and/or Perfherder.
+ *
+ * Including this class will make modifications to elements.
+ *
+ * Please add CSS class styles to the `treeherder-custom-styles.css` file
+ * rather than here.
+ */
+
+html,
+body {
+  height: 100%;
+  font-size: 14px;
+  line-height: 1.42;
+  overflow: hidden;
+}
+
+body {
+  line-height: inherit;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+a:visited,
+.link-style:visited {
+  color: purple;
+}
+
+a {
+  color: #337ab7;
+  cursor: pointer;
+}
+
+label {
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px/10px Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc #ccc #bbb;
+  border-radius: 3px;
+}
+
+input[type='checkbox'] {
+  margin-right: 5px;
+}
+
+/*
+ * Treeherder style settings
+ *
+ * This file contains opt-in styles which can be used across Treeherder
+ * without affecting settings which are either not specific to our
+ * UI component css files, or are shared across Treeherder, Logviewer,
+ * UserGuide, and/or Perfherder.
+ *
+ * Please consider the appropriate css file and attribute location
+ * when adding new styles.
+ */
+
+/* Bootstrap 4 will not show <a> as a link style if it has no href.
+   This adds that style back. */
+.link-style {
+  color: #337ab7 !important;
+  cursor: pointer;
+}
+
+.pagination,
+.panel-title a {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.small-text {
+  font-size: 12px;
+}
+
+/* this is better for drop down menu items because
+  display: none will change text alignment */
+.hide {
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
+}
+
+/* Similar Jobs panel */
+.checkbox {
+  min-height: 20px;
+  padding-left: 4px;
+  padding-top: 2px;
+  justify-content: center;
+}
+
+.dropdown-menu > li > a {
+  cursor: pointer;
+}
+
+.dropdown-menu > li.disabled > a {
+  pointer-events: none;
+  font-style: italic;
+  color: grey;
+}
+
+.dropdown-menu > li.disabled {
+  cursor: not-allowed;
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
+
+.form-control:focus {
+  border: 1px solid #ced4da;
+  box-shadow: none;
+}
+
+/* Spacing for menus with adjacent icons */
+.icon-menu li a span {
+  width: 20px;
+}
+
+.modal-header .close:hover {
+  cursor: pointer;
+}
+
+/*
+ * Icons
+ */
+
+.logviewer-icon {
+  width: 14px;
+  height: 16px;
+  vertical-align: text-top;
+  opacity: 0.7;
+}
+
+.logviewer-icon:hover {
+  opacity: 0.9;
+}
+
+.icon-blue:hover,
+.icon-blue:focus,
+.icon-blue:active {
+  color: #68aae2 !important;
+}
+
+.icon-green:hover,
+.icon-green:focus,
+.icon-green:active {
+  color: #0de00d !important;
+}
+
+.icon-cyan:hover,
+.icon-cyan:focus,
+.icon-cyan:active {
+  color: #00ffff !important;
+}
+
+.icon-superscript {
+  vertical-align: super;
+  font-size: 0.625em;
+  margin-left: -0.2em;
+}
+
+.hover-warning:hover {
+  color: #fa4444 !important;
+}
+
+.dim-quarter {
+  opacity: 0.75;
+}
+
+/*
+ * Cursors
+ */
+
+.th-spinner {
+  color: rgba(145, 164, 221, 0.7);
+}
+
+.th-spinner-lg {
+  color: rgba(145, 164, 221, 0.3);
+}
+
+.pointable,
+.nav-tabs li {
+  cursor: pointer;
+}
+
+/*
+ * Result status colors
+ *
+ * These colors are used both by Treeherder and Logviewer
+ * so receive global status.
+ */
+
+.result-status-shading-success {
+  background-color: rgba(2, 131, 44, 0.24);
+  border-color: rgba(2, 131, 44, 0.24);
+}
+
+.result-status-shading-testfailed {
+  background-color: rgba(221, 102, 2, 0.5);
+  border-color: rgba(221, 102, 2, 0.25);
+}
+
+.result-status-shading-busted {
+  background-color: rgba(144, 0, 0, 0.5);
+  border-color: rgba(144, 0, 0, 0.25);
+}
+
+.result-status-shading-skipped {
+  background-color: rgba(101, 191, 221, 0.25);
+  border-color: rgba(101, 191, 221, 0.25);
+}
+
+.result-status-shading-exception {
+  background-color: rgba(61, 2, 85, 0.25);
+  border-color: rgba(61, 2, 85, 0.25);
+}
+
+.result-status-shading-retry {
+  background-color: rgba(38, 63, 195, 0.25);
+  border-color: rgba(38, 63, 195, 0.25);
+}
+
+.result-status-shading-usercancel {
+  background-color: rgba(250, 115, 172, 0.25);
+  border-color: rgba(250, 115, 172, 0.25);
+}
+
+.result-status-shading-pending {
+  background-color: rgba(160, 160, 160, 0.2);
+  border-color: rgba(160, 160, 160, 0.2);
+}
+
+.result-status-shading-running {
+  background-color: rgba(70, 70, 70, 0.25);
+  border-color: rgba(70, 70, 70, 0.25);
+}
+
+.result-status-shading-unknown {
+  background-color: rgb(252, 248, 227);
+  border-color: rgb(251, 216, 144);
+}
+
+.result-status-shading-superseded {
+  background-color: white;
+}
+
+/*
+ * Colors
+ */
+
+.lightgray,
+.lightgray a {
+  color: lightgray;
+}
+
+.bg-lightgray {
+  background-color: lightgray;
+}
+
+.midgray,
+.midgray a {
+  color: gray;
+}
+
+.lightorange {
+  color: #eba870;
+}
+
+.darkorange {
+  color: #dd6602;
+}
+
+/*
+ * Text
+ */
+
+.queryparam {
+  display: inline-block;
+  font: 12px Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  color: #555;
+}
+
+.strike-through {
+  text-decoration: line-through;
+}
+
+.nowrap {
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.help-block {
+  color: #737373;
+}
+
+/*
+ * Bootstrap/Reactstrap Custom Colors
+ */
+
+/* Darker Info */
+.text-darker-info {
+  color: #0d7d8f;
+}
+
+.badge-darker-info {
+  background: #0d7d8f;
+  color: white;
+}
+
+.bg-darker-info {
+  background-color: #0d7d8f;
+}
+
+.btn-darker-info {
+  background-color: #0d7d8f;
+  border-color: #0d7d8f;
+  color: #ffffff;
+}
+
+.btn-darker-info:hover {
+  color: #ffffff;
+  background-color: #0a5e6d;
+}
+
+.btn-darker-info.disabled {
+  color: black;
+  background-color: #30b9ce80;
+}
+
+.btn-outline-darker-info {
+  color: #0d7d8f;
+  border-color: #0d7d8f;
+}
+
+.btn-outline-darker-info:hover,
+.btn-outline-darker-info:not(:disabled):not(.disabled).active {
+  background-color: #0d7d8f;
+  border-color: #0d7d8f;
+  color: #ffffff;
+}
+
+.btn-outline-darker-info.disabled {
+  color: #02363f;
+  background-color: white;
+  border-color: #0d7d8f;
+}
+
+/* Darker Secondary */
+.text-darker-secondary {
+  color: #53595f;
+}
+
+.badge-darker-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.bg-darker-secondary {
+  background-color: #6c757d;
+}
+
+.btn-darker-secondary {
+  color: #ffffff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-darker-secondary:hover {
+  color: #ffffff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.btn-darker-secondary.disabled {
+  color: #242424;
+  background-color: white;
+  border-color: #6c757d;
+}
+
+.btn-outline-darker-secondary {
+  color: #6c757d;
+  background-color: #fff;
+  border-color: #6c757d;
+}
+
+/*
+ * Tables and panels
+ */
+
+.table-super-condensed thead > tr > th,
+.table-super-condensed tbody > tr > th,
+.table-super-condensed tfoot > tr > th,
+.table-super-condensed thead > tr > td,
+.table-super-condensed tbody > tr > td,
+.table-super-condensed tfoot > tr > td {
+  padding: 2px;
+  font-size: 0.9em;
+}
+
+.panel-spacing table {
+  width: 100%;
+}
+
+.panel-spacing tr th:first-child {
+  padding-right: 2em;
+}
+
+.panel-spacing tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+.panel-spacing table tr {
+  border-bottom: 1px dotted lightgrey;
+}
+
+.modal-lg {
+  max-width: 890px;
+}
+
+.row-height-tight {
+  line-height: 15px !important;
+}
+
+/* ReactTable overriding row, button and link color style for contrast pass */
+.ReactTable .-pagination .-btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+}
+
+.ReactTable .-pagination .-btn[disabled] {
+  background-color: rgba(0, 0, 0, 0.03);
+  opacity: 1;
+}
+
+.ReactTable .item-badge {
+  color: #057699;
+}
+
+.rt-tbody a {
+  color: #187c86;
+}
+
+/*
+ * Onscreen help
+ */
+#onscreen-shortcuts {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  width: 100%;
+  max-width: 960px;
+}
+
+#onscreen-shortcuts div div.card {
+  max-height: 90vh;
+  overflow: auto;
+}
+
+/*
+ * Clipboard
+ *
+ * This facilitates copy on hover for
+ * Logviewer, Raw Log, and Job:name buttons/links
+ */
+
+#clipboard-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 100;
+  display: none;
+  opacity: 0;
+}
+
+#clipboard {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+}
+
+/*
+ * Fonts
+ *
+ * Styles for modifying basic font styles
+ */
+
+.pre {
+  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.max-width-default {
+  max-width: 1250px;
+}
+
+/* Custom widths for compare table cells */
+.table-width-lg {
+  width: 140px;
+}
+
+.table-width-md {
+  width: 100px;
+}
+
+.table-width-sm {
+  width: 50px;
+}
+
+.table-width-xs {
+  width: 20px;
+}
+
+.card-height {
+  height: 260px;
+}
+
+.dropdown-menu-height {
+  max-height: 300px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.loading {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* overlay */
+.loading:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(20, 19, 19, 0.3);
+}
+
+body {
+  overflow: auto;
+}
+
+#userguide {
+  padding: 10px;
+}
+
+#userguide.dt,
+#userguide.dd {
+  text-align: center;
+}
+
+#userguide.panel {
+  padding: 5px;
+}
+
+#userguide a {
+  color: #0056b3;
+}
+
+/*
+ * Job notation table
+ */
+
+.ug-btn {
+  margin: 2px;
+  border: 2px solid;
+}
+
+.ug-btn-comment {
+  border: none;
+  background-color: #fff;
+}
+
+.ug-btn-orange {
+  border-color: #743603;
+}
+
+.ug-btn-purple {
+  border-color: #3a004d;
+}
+
+.ug-btn-red {
+  border-color: #a1020e;
+}
+
+.ug-btn-yellow {
+  border-color: #fbd890;
+}
+
+.ug-btn-bg {
+  background-color: #fff;
+}
+
+/*
+ * Copy values on hover
+ */
+
+#ug-job-name {
+  color: #3675ac;
+}
+
+#ug-raw-log-icon {
+  color: #666;
+}
+
+#ug-logviewer-icon {
+  vertical-align: text-bottom;
+  width: 15px;
+}
+
+/*
+ * Footer
+ */
+
+.ug-footer {
+  overflow: auto;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0 calc(0.25rem - 1px);
+}
+
+/*
+ * Common job, group and count styling
+ */
+
+.job-group {
+  margin: 0;
+  cursor: default;
+}
+
+.job-btn {
+  background: transparent;
+  padding: 0 2px 0 2px;
+  vertical-align: 0;
+  line-height: 1.32;
+  display: none;
+  transition: transform 0.1s;
+  font-size: 12px;
+}
+
+.group-btn {
+  background: transparent;
+  padding: 0 2px 0 2px;
+  vertical-align: 0;
+  line-height: 1.32;
+  cursor: pointer;
+}
+
+.group-btn::before {
+  content: '+';
+}
+
+.group-btn.btn.job-group-count:hover {
+  background-color: rgba(219, 235, 252, 0.51);
+}
+
+.group-symbol {
+  background: transparent;
+  padding: 0 2px 0 2px;
+  border: 0;
+  vertical-align: 0;
+  line-height: 1.32;
+  cursor: pointer;
+  margin-right: -3px;
+}
+
+.group-symbol:hover {
+  cursor: pointer;
+}
+
+.group-content {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.group-content::before {
+  content: '(';
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.group-content::after {
+  content: ')';
+  margin-right: 2px;
+  padding-left: 2px;
+}
+
+.group-job-list {
+  margin-left: -3px;
+  white-space: normal;
+}
+
+.runnable-job-btn {
+  display: none;
+  color: rgba(128, 128, 0, 0.5);
+  margin: 0 -2px 0 -1px;
+  background: transparent;
+  padding: 0 2px;
+  vertical-align: 0;
+  line-height: 1.32;
+  font-size: 12px;
+  border-radius: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.runnable-job-btn-selected {
+  border: 1px solid;
+  padding: 0 -1px;
+  border-radius: 3px;
+  margin: 0 -2px 1px 0;
+  overflow: visible;
+}
+
+.selected-job {
+  border: 4px solid;
+  background-color: #fff;
+}
+
+.selected-count {
+  background-color: #ffffffb3;
+}
+
+.btn-lg-xform {
+  margin: -2px 0px !important;
+  border: 2px solid;
+  border-radius: 3px;
+  font-size: 12px;
+  z-index: 1;
+  transition: 0.1s;
+  transform: scale(1.3, 1.3);
+}
+
+.btn-lg-xform:hover {
+  opacity: 0.9;
+}
+
+.filter-shown {
+  display: inline-block;
+}
+
+/*
+ * Job button colors and classification states
+ */
+
+.job-btn.btn-dkgray,
+.job-btn.btn-ltgray,
+.job-btn.btn-green,
+.job-btn.btn-dkblue,
+.job-btn.btn-ltblue,
+.job-btn.btn-yellow,
+.job-btn.btn-pink,
+.job-btn.btn-dkgray-classified,
+.job-btn.btn-ltgray-classified,
+.job-btn.btn-green-classified,
+.job-btn.btn-dkblue-classified,
+.job-btn.btn-ltblue-classified,
+.job-btn.btn-yellow-classified,
+.job-btn.btn-pink-classified,
+.job-btn.btn-red-classified,
+.job-btn.btn-orange-classified,
+.job-btn.btn-purple-classified,
+.group-btn.btn-dkgray-count,
+.group-btn.btn-ltgray-count,
+.group-btn.btn-green-count,
+.group-btn.btn-dkblue-count,
+.group-btn.btn-ltblue-count,
+.group-btn.btn-yellow-count,
+.group-btn.btn-pink-count {
+  margin: 0 -2px 0 0;
+}
+
+.job-btn.btn-red,
+.job-btn.btn-orange,
+.job-btn.btn-yellow,
+.job-btn.btn-purple {
+  margin: 0 -1px 1px 1px;
+}
+
+.classified-icon {
+  font-size: 0.62em;
+  vertical-align: super;
+}
+
+/* Bold buttons */
+
+.btn-green,
+.btn-orange,
+.btn-purple,
+.btn-red,
+.btn-dkblue,
+.btn-pink,
+.btn-yellow,
+.btn-ltblue {
+  font-weight: bold;
+}
+
+/* Orange, testfailed */
+.btn-orange {
+  background-color: #f7c194;
+  color: #743603;
+}
+.btn-orange:hover,
+.btn-orange:focus,
+.btn-orange:active,
+.btn-orange.active {
+  background-color: #c15700;
+  color: white;
+}
+.btn-orange.disabled:hover,
+.btn-orange.disabled:focus,
+.btn-orange.disabled:active,
+.btn-orange.disabled.active,
+.btn-orange:disabled:hover,
+.btn-orange:disabled:focus,
+.btn-orange:disabled:active,
+.btn-orange:disabled.active,
+fieldset[disabled] .btn-orange:hover,
+fieldset[disabled] .btn-orange:focus,
+fieldset[disabled] .btn-orange:active,
+fieldset[disabled] .btn-orange.active {
+  background-color: #dd6602;
+  border-color: #dd6602;
+}
+
+/* Orange, testfailed classified */
+.btn-orange-classified,
+.btn-orange-classified-count {
+  color: #b45303;
+}
+.btn-orange-classified:hover,
+.btn-orange-classified:focus,
+.btn-orange-classified:active,
+.btn-orange-classified.active {
+  background-color: #b45303;
+  border-color: #aa4f02;
+  color: white;
+}
+.btn-orange-classified-count:hover {
+  color: #aa4f02;
+}
+.btn-orange-classified.disabled:hover,
+.btn-orange-classified.disabled:focus,
+.btn-orange-classified.disabled:active,
+.btn-orange-classified.disabled.active,
+.btn-orange-classified:disabled:hover,
+.btn-orange-classified:disabled:focus,
+.btn-orange-classified:disabled:active,
+.btn-orange-classified:disabled.active,
+fieldset[disabled] .btn-orange-classified:hover,
+fieldset[disabled] .btn-orange-classified:focus,
+fieldset[disabled] .btn-orange-classified:active,
+fieldset[disabled] .btn-orange-classified.active {
+  background-color: #dd6602;
+  border-color: #dd6602;
+}
+
+/* Red, busted */
+.btn-red {
+  background-color: #b74c4c;
+  color: white;
+}
+.btn-red:hover,
+.btn-red:focus,
+.btn-red:active,
+.btn-red.active {
+  background-color: #a1020e;
+  color: white;
+}
+.btn-red.disabled:hover,
+.btn-red.disabled:focus,
+.btn-red.disabled:active,
+.btn-red.disabled.active,
+.btn-red:disabled:hover,
+.btn-red:disabled:focus,
+.btn-red:disabled:active,
+.btn-red:disabled.active,
+fieldset[disabled] .btn-red:hover,
+fieldset[disabled] .btn-red:focus,
+fieldset[disabled] .btn-red:active,
+fieldset[disabled] .btn-red.active {
+  background-color: #c2020e;
+  border-color: #c2020e;
+}
+
+/* Red, busted classified */
+.btn-red-classified,
+.btn-red-classified-count,
+.btn-red-classified-count:hover {
+  color: #90010a;
+}
+.btn-red-classified:hover,
+.btn-red-classified:focus,
+.btn-red-classified:active,
+.btn-red-classified.active {
+  background-color: #a9020c;
+  border-color: #90010a;
+  color: white;
+}
+.btn-red-classified.disabled:hover,
+.btn-red-classified.disabled:focus,
+.btn-red-classified.disabled:active,
+.btn-red-classified.disabled.active,
+.btn-red-classified:disabled:hover,
+.btn-red-classified:disabled:focus,
+.btn-red-classified:disabled:active,
+.btn-red-classified:disabled.active,
+fieldset[disabled] .btn-red-classified:hover,
+fieldset[disabled] .btn-red-classified:focus,
+fieldset[disabled] .btn-red-classified:active,
+fieldset[disabled] .btn-red-classified.active {
+  background-color: #c2020e;
+  border-color: #c2020e;
+  color: white;
+}
+
+/* Dark blue, retry */
+.btn-dkblue,
+.btn-dkblue-count,
+.btn-dkblue-classified,
+.btn-dkblue-classified-count,
+.btn-dkblue-count:hover,
+.btn-dkblue-classified-count:hover {
+  color: #283aa2;
+}
+.btn-dkblue:hover,
+.btn-dkblue-classified:hover,
+.btn-dkblue:focus,
+.btn-dkblue:active,
+.btn-dkblue.active {
+  border-color: #263fc3;
+  background-color: #263fc3;
+  color: white;
+  font-weight: bold;
+}
+.btn-dkblue.disabled:hover,
+.btn-dkblue.disabled:focus,
+.btn-dkblue.disabled:active,
+.btn-dkblue.disabled.active,
+.btn-dkblue:disabled:hover,
+.btn-dkblue:disabled:focus,
+.btn-dkblue:disabled:active,
+.btn-dkblue:disabled.active,
+fieldset[disabled] .btn-dkblue:hover,
+fieldset[disabled] .btn-dkblue:focus,
+fieldset[disabled] .btn-dkblue:active,
+fieldset[disabled] .btn-dkblue.active {
+  background-color: #2d48d6;
+  border-color: #2d48d6;
+}
+
+/* Green, success */
+.btn-green,
+.btn-green-count,
+.btn-green-classified,
+.btn-green-classified-count,
+.btn-green-count:hover,
+.btn-green-classified-count:hover {
+  color: rgba(2, 130, 51, 0.95);
+  font-weight: bold;
+}
+.btn-green:hover,
+.btn-green-classified:hover,
+.btn-green:focus,
+.btn-green:active,
+.btn-green.active {
+  border-color: #019029;
+  background-color: #017722;
+  color: white;
+}
+.btn-green.disabled:hover,
+.btn-green.disabled:focus,
+.btn-green.disabled:active,
+.btn-green.disabled.active,
+.btn-green:disabled:hover,
+.btn-green:disabled:focus,
+.btn-green:disabled:active,
+.btn-green:disabled.active,
+fieldset[disabled] .btn-green:hover,
+fieldset[disabled] .btn-green:focus,
+fieldset[disabled] .btn-green:active,
+fieldset[disabled] .btn-green.active {
+  border-color: #02c238;
+}
+
+/* Purple, infrastructure exception */
+.btn-purple {
+  background-color: #9a7da6;
+  color: #3a004d;
+}
+.btn-purple:hover,
+.btn-purple:focus,
+.btn-purple:active,
+.btn-purple.active {
+  background-color: #3a004d;
+  color: white;
+}
+.btn-purple.disabled:hover,
+.btn-purple.disabled:focus,
+.btn-purple.disabled:active,
+.btn-purple.disabled.active,
+.btn-purple:disabled:hover,
+.btn-purple:disabled:focus,
+.btn-purple:disabled:active,
+.btn-purple:disabled.active,
+fieldset[disabled] .btn-purple:hover,
+fieldset[disabled] .btn-purple:focus,
+fieldset[disabled] .btn-purple:active,
+fieldset[disabled] .btn-purple.active {
+  background-color: #9002c2;
+  border-color: #9002c2;
+  color: white;
+}
+
+/* Purple, infrastructure exception classified */
+.btn-purple-classified,
+.btn-purple-classified-count,
+.btn-purple-classified-count:hover {
+  color: #6f0296;
+}
+.btn-purple-classified:hover,
+.btn-purple-classified:focus,
+.btn-purple-classified:active,
+.btn-purple-classified.active {
+  background-color: #7d02a9;
+  border-color: #6b0190;
+  color: white;
+}
+.btn-purple-classified.disabled:hover,
+.btn-purple-classified.disabled:focus,
+.btn-purple-classified.disabled:active,
+.btn-purple-classified.disabled.active,
+.btn-purple-classified:disabled:hover,
+.btn-purple-classified:disabled:focus,
+.btn-purple-classified:disabled:active,
+.btn-purple-classified:disabled.active,
+fieldset[disabled] .btn-purple-classified:hover,
+fieldset[disabled] .btn-purple-classified:focus,
+fieldset[disabled] .btn-purple-classified:active,
+fieldset[disabled] .btn-purple-classified.active {
+  background-color: #9002c2;
+  border-color: #9002c2;
+  color: white;
+}
+
+/* Light blue, superseded */
+.btn-ltblue,
+.btn-ltblue-count,
+.btn-ltblue-classified,
+.btn-ltblue-classified-count,
+.btn-ltblue-count:hover,
+.btn-ltblue-classified-count:hover {
+  color: #3f77c6;
+}
+.btn-ltblue:hover,
+.btn-ltblue-classified:hover,
+.btn-ltblue:focus,
+.btn-ltblue:active,
+.btn-ltblue.active {
+  border-color: #3f77c6;
+  background-color: #3f77c6;
+  color: white;
+}
+.btn-ltblue.disabled:hover,
+.btn-ltblue.disabled:focus,
+.btn-ltblue.disabled:active,
+.btn-ltblue.disabled.active,
+.btn-ltblue:disabled:hover,
+.btn-ltblue:disabled:focus,
+.btn-ltblue:disabled:active,
+.btn-ltblue:disabled.active,
+fieldset[disabled] .btn-ltblue:hover,
+fieldset[disabled] .btn-ltblue:focus,
+fieldset[disabled] .btn-ltblue:active,
+fieldset[disabled] .btn-ltblue.active {
+  border-color: #81b8ed;
+}
+
+/* Light gray, pending */
+.btn-ltgray,
+.btn-ltgray-count,
+.btn-ltgray-classified,
+.btn-ltgray-classified-count {
+  color: #757575;
+}
+.btn-ltgray-count:hover,
+.btn-ltgray-classified-count:hover {
+  color: #808080;
+}
+.btn-ltgray:hover,
+.btn-ltgray-classified:hover,
+.btn-ltgray:focus,
+.btn-ltgray:active,
+.btn-ltgray.active {
+  border-color: #808080;
+  color: #808080;
+}
+.btn-ltgray.disabled:hover,
+.btn-ltgray.disabled:focus,
+.btn-ltgray.disabled:active,
+.btn-ltgray.disabled.active,
+.btn-ltgray:disabled:hover,
+.btn-ltgray:disabled:focus,
+.btn-ltgray:disabled:active,
+.btn-ltgray:disabled.active,
+fieldset[disabled] .btn-ltgray:hover,
+fieldset[disabled] .btn-ltgray:focus,
+fieldset[disabled] .btn-ltgray:active,
+fieldset[disabled] .btn-ltgray.active {
+  color: #e0e0e0;
+  border-color: #e0e0e0;
+}
+
+/* Mid gray (presently unused) */
+.btn-mdgray,
+.btn-mdgray-count,
+.btn-mdgray-classified,
+.btn-mdgray-classified-count,
+.btn-mdgray-count:hover,
+.btn-mdgray-classified-count:hover {
+  background-color: #bfbfbf;
+  border-color: #bfbfbf;
+}
+.btn-mdgray:hover,
+.btn-mdgray-classified:hover,
+.btn-mdgray:focus,
+.btn-mdgray:active,
+.btn-mdgray.active {
+  background-color: #b2b2b2;
+  border-color: #a6a6a6;
+}
+.btn-mdgray.disabled:hover,
+.btn-mdgray.disabled:focus,
+.btn-mdgray.disabled:active,
+.btn-mdgray.disabled.active,
+.btn-mdgray:disabled:hover,
+.btn-mdgray:disabled:focus,
+.btn-mdgray:disabled:active,
+.btn-mdgray:disabled.active,
+fieldset[disabled] .btn-mdgray:hover,
+fieldset[disabled] .btn-mdgray:focus,
+fieldset[disabled] .btn-mdgray:active,
+fieldset[disabled] .btn-mdgray.active {
+  background-color: #bfbfbf;
+  border-color: #bfbfbf;
+}
+
+/* Dark gray, running */
+.btn-dkgray,
+.btn-dkgray-count,
+.btn-dkgray-classified,
+.btn-dkgray-classified-count,
+.btn-dkgray-count:hover,
+.btn-dkgray-classified-count:hover {
+  color: black;
+}
+.btn-dkgray:hover,
+.btn-dkgray-classified:hover,
+.btn-dkgray:focus,
+.btn-dkgray:active,
+.btn-dkgray.active {
+  background-color: black;
+  border-color: black;
+  color: white;
+}
+.btn-dkgray.disabled:hover,
+.btn-dkgray.disabled:focus,
+.btn-dkgray.disabled:active,
+.btn-dkgray.disabled.active,
+.btn-dkgray:disabled:hover,
+.btn-dkgray:disabled:focus,
+.btn-dkgray:disabled:active,
+.btn-dkgray:disabled.active,
+fieldset[disabled] .btn-dkgray:hover,
+fieldset[disabled] .btn-dkgray:focus,
+fieldset[disabled] .btn-dkgray:active,
+fieldset[disabled] .btn-dkgray.active {
+  background-color: #7c7a7d;
+  border-color: #7c7a7d;
+  color: white;
+}
+
+/* Yellow, unknown */
+.btn-yellow,
+.btn-yellow-count,
+.btn-yellow-classified,
+.btn-yellow-classified-count {
+  background-color: #fcf8e3;
+  border-color: #fbd890;
+  color: #8a6d3b;
+}
+.btn-yellow-count:hover,
+.btn-yellow-classified-count:hover {
+  color: #8a6d3b;
+}
+.btn-yellow:hover,
+.btn-yellow-classified:hover,
+.btn-yellow:focus,
+.btn-yellow:active,
+.btn-yellow.active {
+  background-color: #8a6d3b;
+  border-color: #fbd890;
+  color: #fcf8e3;
+}
+.btn-yellow.disabled:hover,
+.btn-yellow.disabled:focus,
+.btn-yellow.disabled:active,
+.btn-yellow.disabled.active,
+.btn-yellow:disabled:hover,
+.btn-yellow:disabled:focus,
+.btn-yellow:disabled:active,
+.btn-yellow:disabled.active,
+fieldset[disabled] .btn-yellow:hover,
+fieldset[disabled] .btn-yellow:focus,
+fieldset[disabled] .btn-yellow:active,
+fieldset[disabled] .btn-yellow.active {
+  background-color: #fcf8e3;
+  border-color: #fbd890;
+}
+
+/* Pink, cancelled */
+.btn-pink,
+.btn-pink-count,
+.btn-pink-classified,
+.btn-pink-classified-count,
+.btn-pink-count:hover,
+.btn-pink-classified-count:hover {
+  color: #cf2b9f;
+}
+.btn-pink:hover,
+.btn-pink-classified:hover,
+.btn-pink:focus,
+.btn-pink:active,
+.btn-pink.active {
+  background-color: #cf2b9f;
+  border-color: #cf2b9f;
+  color: white;
+}
+.btn-pink.disabled:hover,
+.btn-pink.disabled:focus,
+.btn-pink.disabled:active,
+.btn-pink.disabled.active,
+.btn-pink:disabled:hover,
+.btn-pink:disabled:focus,
+.btn-pink:disabled:active,
+.btn-pink:disabled.active,
+fieldset[disabled] .btn-pink:hover,
+fieldset[disabled] .btn-pink:focus,
+fieldset[disabled] .btn-pink:active,
+fieldset[disabled] .btn-pink.active {
+  background-color: #ff80e5;
+  border-color: #ff80e5;
+}
+
+
+/*# sourceMappingURL=userguide.672823fd.css.map*/

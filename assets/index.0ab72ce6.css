@@ -1,0 +1,2796 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.height-minus-navbars {
+  height: calc(100% - 63px);
+}
+
+.th-global-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+.dropdown-item.disabled {
+  cursor: not-allowed;
+  font-style: italic;
+}
+/*
+ * Resizer between PushList and DetailsPanel
+ */
+
+.SplitPane.horizontal {
+  top: inherit !important;
+  position: inherit !important;
+}
+
+.Resizer {
+  background: #000;
+  opacity: 0.2;
+  z-index: 1;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+}
+
+.Resizer:hover {
+  -webkit-transition: all 2s ease;
+  transition: all 2s ease;
+}
+
+.Resizer.horizontal {
+  height: 11px;
+  margin: -5px 0;
+  border-top: 5px solid rgba(255, 255, 255, 0);
+  border-bottom: 5px solid rgba(255, 255, 255, 0);
+  cursor: row-resize;
+  width: 100%;
+}
+
+.Resizer.horizontal:hover {
+  border-top: 5px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+}
+
+.Resizer.disabled {
+  cursor: not-allowed;
+}
+
+.Resizer.disabled:hover {
+  border-color: transparent;
+}
+
+/*
+ * Treeherder Base settings
+ *
+ * This file contains settings which are either not specific to our
+ * UI component css files, or are shared across Treeherder, Logviewer,
+ * UserGuide, and/or Perfherder.
+ *
+ * Including this class will make modifications to elements.
+ *
+ * Please add CSS class styles to the `treeherder-custom-styles.css` file
+ * rather than here.
+ */
+
+html,
+body {
+  height: 100%;
+  font-size: 14px;
+  line-height: 1.42;
+  overflow: hidden;
+}
+
+body {
+  line-height: inherit;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+a:visited,
+.link-style:visited {
+  color: purple;
+}
+
+a {
+  color: #337ab7;
+  cursor: pointer;
+}
+
+label {
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px/10px Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc #ccc #bbb;
+  border-radius: 3px;
+}
+
+input[type='checkbox'] {
+  margin-right: 5px;
+}
+
+/*
+ * Treeherder style settings
+ *
+ * This file contains opt-in styles which can be used across Treeherder
+ * without affecting settings which are either not specific to our
+ * UI component css files, or are shared across Treeherder, Logviewer,
+ * UserGuide, and/or Perfherder.
+ *
+ * Please consider the appropriate css file and attribute location
+ * when adding new styles.
+ */
+
+/* Bootstrap 4 will not show <a> as a link style if it has no href.
+   This adds that style back. */
+.link-style {
+  color: #337ab7 !important;
+  cursor: pointer;
+}
+
+.pagination,
+.panel-title a {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.small-text {
+  font-size: 12px;
+}
+
+/* this is better for drop down menu items because
+  display: none will change text alignment */
+.hide {
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
+}
+
+/* Similar Jobs panel */
+.checkbox {
+  min-height: 20px;
+  padding-left: 4px;
+  padding-top: 2px;
+  justify-content: center;
+}
+
+.dropdown-menu > li > a {
+  cursor: pointer;
+}
+
+.dropdown-menu > li.disabled > a {
+  pointer-events: none;
+  font-style: italic;
+  color: grey;
+}
+
+.dropdown-menu > li.disabled {
+  cursor: not-allowed;
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
+
+.form-control:focus {
+  border: 1px solid #ced4da;
+  box-shadow: none;
+}
+
+/* Spacing for menus with adjacent icons */
+.icon-menu li a span {
+  width: 20px;
+}
+
+.modal-header .close:hover {
+  cursor: pointer;
+}
+
+/*
+ * Icons
+ */
+
+.logviewer-icon {
+  width: 14px;
+  height: 16px;
+  vertical-align: text-top;
+  opacity: 0.7;
+}
+
+.logviewer-icon:hover {
+  opacity: 0.9;
+}
+
+.icon-blue:hover,
+.icon-blue:focus,
+.icon-blue:active {
+  color: #68aae2 !important;
+}
+
+.icon-green:hover,
+.icon-green:focus,
+.icon-green:active {
+  color: #0de00d !important;
+}
+
+.icon-cyan:hover,
+.icon-cyan:focus,
+.icon-cyan:active {
+  color: #00ffff !important;
+}
+
+.icon-superscript {
+  vertical-align: super;
+  font-size: 0.625em;
+  margin-left: -0.2em;
+}
+
+.hover-warning:hover {
+  color: #fa4444 !important;
+}
+
+.dim-quarter {
+  opacity: 0.75;
+}
+
+/*
+ * Cursors
+ */
+
+.th-spinner {
+  color: rgba(145, 164, 221, 0.7);
+}
+
+.th-spinner-lg {
+  color: rgba(145, 164, 221, 0.3);
+}
+
+.pointable,
+.nav-tabs li {
+  cursor: pointer;
+}
+
+/*
+ * Result status colors
+ *
+ * These colors are used both by Treeherder and Logviewer
+ * so receive global status.
+ */
+
+.result-status-shading-success {
+  background-color: rgba(2, 131, 44, 0.24);
+  border-color: rgba(2, 131, 44, 0.24);
+}
+
+.result-status-shading-testfailed {
+  background-color: rgba(221, 102, 2, 0.5);
+  border-color: rgba(221, 102, 2, 0.25);
+}
+
+.result-status-shading-busted {
+  background-color: rgba(144, 0, 0, 0.5);
+  border-color: rgba(144, 0, 0, 0.25);
+}
+
+.result-status-shading-skipped {
+  background-color: rgba(101, 191, 221, 0.25);
+  border-color: rgba(101, 191, 221, 0.25);
+}
+
+.result-status-shading-exception {
+  background-color: rgba(61, 2, 85, 0.25);
+  border-color: rgba(61, 2, 85, 0.25);
+}
+
+.result-status-shading-retry {
+  background-color: rgba(38, 63, 195, 0.25);
+  border-color: rgba(38, 63, 195, 0.25);
+}
+
+.result-status-shading-usercancel {
+  background-color: rgba(250, 115, 172, 0.25);
+  border-color: rgba(250, 115, 172, 0.25);
+}
+
+.result-status-shading-pending {
+  background-color: rgba(160, 160, 160, 0.2);
+  border-color: rgba(160, 160, 160, 0.2);
+}
+
+.result-status-shading-running {
+  background-color: rgba(70, 70, 70, 0.25);
+  border-color: rgba(70, 70, 70, 0.25);
+}
+
+.result-status-shading-unknown {
+  background-color: rgb(252, 248, 227);
+  border-color: rgb(251, 216, 144);
+}
+
+.result-status-shading-superseded {
+  background-color: white;
+}
+
+/*
+ * Colors
+ */
+
+.lightgray,
+.lightgray a {
+  color: lightgray;
+}
+
+.bg-lightgray {
+  background-color: lightgray;
+}
+
+.midgray,
+.midgray a {
+  color: gray;
+}
+
+.lightorange {
+  color: #eba870;
+}
+
+.darkorange {
+  color: #dd6602;
+}
+
+/*
+ * Text
+ */
+
+.queryparam {
+  display: inline-block;
+  font: 12px Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  color: #555;
+}
+
+.strike-through {
+  text-decoration: line-through;
+}
+
+.nowrap {
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.help-block {
+  color: #737373;
+}
+
+/*
+ * Bootstrap/Reactstrap Custom Colors
+ */
+
+/* Darker Info */
+.text-darker-info {
+  color: #0d7d8f;
+}
+
+.badge-darker-info {
+  background: #0d7d8f;
+  color: white;
+}
+
+.bg-darker-info {
+  background-color: #0d7d8f;
+}
+
+.btn-darker-info {
+  background-color: #0d7d8f;
+  border-color: #0d7d8f;
+  color: #ffffff;
+}
+
+.btn-darker-info:hover {
+  color: #ffffff;
+  background-color: #0a5e6d;
+}
+
+.btn-darker-info.disabled {
+  color: black;
+  background-color: #30b9ce80;
+}
+
+.btn-outline-darker-info {
+  color: #0d7d8f;
+  border-color: #0d7d8f;
+}
+
+.btn-outline-darker-info:hover,
+.btn-outline-darker-info:not(:disabled):not(.disabled).active {
+  background-color: #0d7d8f;
+  border-color: #0d7d8f;
+  color: #ffffff;
+}
+
+.btn-outline-darker-info.disabled {
+  color: #02363f;
+  background-color: white;
+  border-color: #0d7d8f;
+}
+
+/* Darker Secondary */
+.text-darker-secondary {
+  color: #53595f;
+}
+
+.badge-darker-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.bg-darker-secondary {
+  background-color: #6c757d;
+}
+
+.btn-darker-secondary {
+  color: #ffffff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-darker-secondary:hover {
+  color: #ffffff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.btn-darker-secondary.disabled {
+  color: #242424;
+  background-color: white;
+  border-color: #6c757d;
+}
+
+.btn-outline-darker-secondary {
+  color: #6c757d;
+  background-color: #fff;
+  border-color: #6c757d;
+}
+
+/*
+ * Tables and panels
+ */
+
+.table-super-condensed thead > tr > th,
+.table-super-condensed tbody > tr > th,
+.table-super-condensed tfoot > tr > th,
+.table-super-condensed thead > tr > td,
+.table-super-condensed tbody > tr > td,
+.table-super-condensed tfoot > tr > td {
+  padding: 2px;
+  font-size: 0.9em;
+}
+
+.panel-spacing table {
+  width: 100%;
+}
+
+.panel-spacing tr th:first-child {
+  padding-right: 2em;
+}
+
+.panel-spacing tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+.panel-spacing table tr {
+  border-bottom: 1px dotted lightgrey;
+}
+
+.modal-lg {
+  max-width: 890px;
+}
+
+.row-height-tight {
+  line-height: 15px !important;
+}
+
+/* ReactTable overriding row, button and link color style for contrast pass */
+.ReactTable .-pagination .-btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+}
+
+.ReactTable .-pagination .-btn[disabled] {
+  background-color: rgba(0, 0, 0, 0.03);
+  opacity: 1;
+}
+
+.ReactTable .item-badge {
+  color: #057699;
+}
+
+.rt-tbody a {
+  color: #187c86;
+}
+
+/*
+ * Onscreen help
+ */
+#onscreen-shortcuts {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  width: 100%;
+  max-width: 960px;
+}
+
+#onscreen-shortcuts div div.card {
+  max-height: 90vh;
+  overflow: auto;
+}
+
+/*
+ * Clipboard
+ *
+ * This facilitates copy on hover for
+ * Logviewer, Raw Log, and Job:name buttons/links
+ */
+
+#clipboard-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 100;
+  display: none;
+  opacity: 0;
+}
+
+#clipboard {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+}
+
+/*
+ * Fonts
+ *
+ * Styles for modifying basic font styles
+ */
+
+.pre {
+  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.max-width-default {
+  max-width: 1250px;
+}
+
+/* Custom widths for compare table cells */
+.table-width-lg {
+  width: 140px;
+}
+
+.table-width-md {
+  width: 100px;
+}
+
+.table-width-sm {
+  width: 50px;
+}
+
+.table-width-xs {
+  width: 20px;
+}
+
+.card-height {
+  height: 260px;
+}
+
+.dropdown-menu-height {
+  max-height: 300px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.loading {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* overlay */
+.loading:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(20, 19, 19, 0.3);
+}
+
+/*
+ * Main navbar settings
+ */
+
+#global-navbar-container {
+  background-color: #273038;
+  margin-bottom: 0;
+  flex: none;
+}
+
+#th-global-navbar-top {
+  padding-left: 0;
+  padding-top: 1px;
+  border-bottom: 1px solid black;
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  background-color: #222;
+}
+
+.navbar {
+  padding: 0;
+}
+
+#th-global-navbar-top .dropdown-menu {
+  top: inherit;
+}
+
+.dropdown-menu {
+  min-width: inherit;
+}
+
+.dropdown-menu > li > a,
+.dropdown-menu a {
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: #262626;
+  text-decoration: none;
+}
+
+label.dropdown-item {
+  margin-bottom: 0;
+}
+
+label.dropdown-item.active,
+.dropdown-item:active {
+  color: #0b0c0e;
+}
+
+.dropdown-item input[type='checkbox'] {
+  margin-right: 5px;
+}
+
+#th-logo {
+  padding-left: 14px;
+  border-left: 0;
+}
+
+#th-logo img {
+  margin-top: -8px;
+  max-height: 18px;
+}
+
+/*
+ * Right hand upper navbar
+ */
+
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-menu-btn {
+  margin-right: -4px;
+  padding-left: 14px;
+  padding-right: 14px;
+  font-size: 13px;
+}
+
+.nav-menu-btn.dropdown-toggle {
+  width: 98%;
+}
+
+.nav-menu-btn:after {
+  font-size: 14px;
+}
+
+.nav-help-btn {
+  margin-right: -4px;
+  padding-left: 12px;
+  padding-right: 8px;
+}
+
+.th-context-navbar {
+  background-color: #354048;
+  overflow: visible;
+}
+
+/*
+ * Left hand lower navbar
+ */
+
+secondary-nav-bar {
+  width: 100%;
+}
+
+.watched-repo-main-btn {
+  border-right: 0;
+  padding-right: 5px;
+}
+
+.watched-repo-main-btn:visited,
+.watched-repo-main-btn:link {
+  color: lightgrey;
+}
+
+.watched-repo-navbar {
+  overflow: visible;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  display: flex;
+  background-color: #354048;
+}
+
+.tree-closed {
+  color: rgb(161, 52, 53);
+}
+
+.tree-open {
+  color: green;
+}
+
+.tree-approval {
+  color: #fb9910;
+}
+
+.tree-unavailable {
+  color: lightgray;
+}
+
+/*
+ * Right hand lower navbar
+ */
+
+.group-state-nav-icon {
+  width: 7px;
+  display: inline-block;
+}
+
+.btn-nav-filter {
+  padding: 7px 2px;
+}
+
+#filter-chicklets .btn {
+  padding: 0;
+  margin: 0px 1px 2px 1px;
+}
+
+.btn.btn-view-nav.btn-orange-filter-chicklet,
+.btn.btn-view-nav.btn-orange-filter-chicklet:hover {
+  color: #dd6602;
+}
+
+.btn.btn-view-nav.btn-red-filter-chicklet,
+.btn.btn-view-nav.btn-red-filter-chicklet:hover {
+  color: #c03a44;
+}
+
+.btn.btn-view-nav.btn-purple-filter-chicklet,
+.btn.btn-view-nav.btn-purple-filter-chicklet:hover {
+  color: #77438d;
+}
+
+.btn.btn-view-nav.btn-green-filter-chicklet,
+.btn.btn-view-nav.btn-green:hover {
+  color: rgba(2, 130, 51, 0.75);
+}
+
+.btn.btn-view-nav.btn-dkblue-filter-chicklet,
+.btn.btn-view-nav.btn-dkblue-filter-chicklet:hover {
+  color: #3656ff;
+}
+
+.btn.btn-view-nav.btn-pink-filter-chicklet,
+.btn.btn-view-nav.btn-pink-filter-chicklet:hover {
+  color: rgba(250, 115, 172, 0.82);
+}
+
+.btn.btn-view-nav.btn-ltblue-filter-chicklet,
+.btn.btn-view-nav.btn-ltblue-filter-chicklet:hover {
+  color: #81b8ed;
+}
+
+.btn.btn-view-nav.btn-ltgray-filter-chicklet,
+.btn.btn-view-nav.btn-ltgray-filter-chicklet:hover {
+  color: #e0e0e0;
+}
+
+.btn.btn-view-nav.btn-dkgray-filter-chicklet,
+.btn.btn-view-nav.btn-dkgray-filter-chicklet:hover {
+  color: #7c7a7d;
+}
+
+.btn.btn-view-nav.btn-black-filter-chicklet,
+.btn.btn-view-nav.btn-black-filter-chicklet:hover {
+  color: black;
+}
+
+/*
+ * Quick Filter
+ */
+
+#quick-filter {
+  height: 28px;
+  width: 150px;
+  display: inherit;
+  transition: width 0.2s;
+}
+
+#quick-filter-parent {
+  position: relative;
+}
+
+@media (min-width: 850px) {
+  #quick-filter:focus,
+  #quick-filter:valid {
+    width: 300px !important;
+    padding-right: 20px;
+  }
+}
+
+#quick-filter:valid + #quick-filter-clear-button {
+  display: inherit;
+}
+
+#quick-filter-clear-button {
+  color: #bababa;
+  font-size: 13px;
+  cursor: pointer;
+  position: relative;
+  display: none;
+  top: 1px;
+  right: 20px;
+  height: 16px;
+}
+
+/*
+ * Unclassified failures button
+ */
+
+.btn-unclassified-failures {
+  margin-top: 1px;
+  padding: 3px 10px;
+  background-color: rgba(78, 93, 21, 0.56);
+  border-color: #9fa01d;
+  color: lightgray;
+}
+.btn-unclassified-failures:hover,
+.btn-unclassified-failures:focus {
+  background-color: rgba(78, 93, 21, 0.56);
+  border-color: #cdce1d;
+  color: lightgray;
+}
+.btn-unclassified-failures:active,
+.btn-unclassified-failures.active {
+  background-color: #cdce1d;
+  border-color: #cdce1d;
+  color: #25292b;
+}
+.btn-unclassified-failures.disabled:hover,
+.btn-unclassified-failures.disabled:focus,
+.btn-unclassified-failures.disabled:active,
+.btn-unclassified-failures.disabled.active,
+.btn-unclassified-failures:disabled:hover,
+.btn-unclassified-failures:disabled:focus,
+.btn-unclassified-failures:disabled:active,
+.btn-unclassified-failures:disabled.active,
+fieldset[disabled] .btn-unclassified-failures:hover,
+fieldset[disabled] .btn-unclassified-failures:focus,
+fieldset[disabled] .btn-unclassified-failures:active,
+fieldset[disabled] .btn-unclassified-failures.active {
+  color: #e0e0e0;
+  border-color: #e0e0e0;
+}
+
+/*
+ * Navbar button customization
+ */
+
+.btn-view-nav,
+.btn-view-nav:visited {
+  background-color: transparent;
+  border-color: #373d40;
+  color: lightgray;
+  border-radius: 0;
+  border-bottom: 0;
+  border-top: 0;
+  border-right: 0;
+}
+
+.btn-view-nav:hover,
+.btn-view-nav:focus,
+.btn-view-nav:active,
+.btn-view-nav.active {
+  background-color: #2c3133 !important;
+  border-color: #1a1d20 !important;
+  color: white;
+}
+.btn-view-nav.disabled:hover,
+.btn-view-nav.disabled:focus,
+.btn-view-nav.disabled:active,
+.btn-view-nav.disabled.active,
+.btn-view-nav:disabled:hover,
+.btn-view-nav:disabled:focus,
+.btn-view-nav:disabled:active,
+.btn-view-nav:disabled.active,
+fieldset[disabled] .btn-view-nav:hover,
+fieldset[disabled] .btn-view-nav:focus,
+fieldset[disabled] .btn-view-nav:active,
+fieldset[disabled] .btn-view-nav.active {
+  color: #e0e0e0;
+  border-color: #e0e0e0;
+}
+
+.btn-view-nav-closed {
+  background-color: rgba(107, 4, 4, 0.53);
+  border-color: #22282d;
+  color: lightgray;
+  border-radius: 0;
+  border-bottom: 0;
+  border-top: 0;
+  border-left: 0;
+}
+.btn-view-nav-closed:hover,
+.btn-view-nav-closed:focus,
+.btn-view-nav-closed:active,
+.btn-view-nav-closed.active {
+  background-color: rgba(107, 4, 4, 0.53);
+  border-color: #1a1d20;
+  color: white;
+}
+.btn-view-nav-closed.disabled:hover,
+.btn-view-nav-closed.disabled:focus,
+.btn-view-nav-closed.disabled:active,
+.btn-view-nav-closed.disabled.active,
+.btn-view-nav-closed:disabled:hover,
+.btn-view-nav-closed:disabled:focus,
+.btn-view-nav-closed:disabled:active,
+.btn-view-nav-closed:disabled.active,
+fieldset[disabled] .btn-view-nav-closed:hover,
+fieldset[disabled] .btn-view-nav-closed:focus,
+fieldset[disabled] .btn-view-nav-closed:active,
+fieldset[disabled] .btn-view-nav-closed.active {
+  color: #e0e0e0;
+  border-color: #e0e0e0;
+}
+
+@media (min-width: 960px) {
+  .strikethrough::after {
+    text-decoration: line-through;
+  }
+
+  .btn-toggle-duplicate-jobs::after {
+    content: ' Duplicates';
+  }
+}
+
+.navbar-badge.badge * {
+  cursor: default;
+}
+
+.navbar-badge.badge {
+  margin: 0 5px;
+}
+
+#notification-dropdown {
+  max-width: 25em;
+  max-height: 20em;
+  overflow-y: scroll;
+  padding-left: 20px;
+  padding-right: 14px;
+}
+
+#notification-dropdown .dropdown-header {
+  padding-left: 0;
+  padding-bottom: 4px;
+}
+
+.notification-dropdown-line {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.notification-dropdown-btn {
+  margin-left: 4px;
+  font-size: 10px;
+}
+
+#repo-dropdown {
+  min-width: 30rem;
+  max-height: 35rem;
+  overflow-x: hidden;
+}
+
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-header {
+  font-size: 12px;
+  color: #656f77;
+}
+
+.dropdown-link,
+.dropdown-link > a {
+  color: #212529cc;
+  padding-top: 0.5rem;
+}
+
+#infra-dropdown {
+  min-width: 21rem;
+}
+
+.checkbox-dropdown-menu .repogroup {
+  padding-left: 0;
+}
+
+.dropdown-item:hover {
+  background-color: #d3d3d34d;
+}
+
+/* Used by Perfherder and IFV */
+.top-navbar {
+  background-color: #222;
+}
+
+.navbar-link {
+  color: lightgray;
+}
+
+.navbar-link:hover {
+  color: lightgray;
+}
+
+.navbar-link:visited {
+  color: lightgray;
+}
+
+/*
+ * Update notification panel
+ */
+
+.update-alert-panel {
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+/*
+ *  Active Filters panel
+ */
+.active-filters-bar {
+  padding: 4px 25px 4px 30px;
+}
+
+.active-filters-title {
+  padding-right: 15px;
+}
+
+.filtersbar-filter {
+  font-size: 12px;
+  padding-right: 12px;
+  display: inline-block;
+}
+
+.filtersbar-filter button {
+  font-size: 12px;
+}
+
+.new-filter-input {
+  margin-top: 5px;
+}
+
+.new-filter-input button,
+.new-filter-input input,
+.new-filter-input select {
+  margin-right: 5px;
+  padding-top: 3px;
+  border: 1px solid #ced4da;
+}
+
+/*
+ * Notifications
+ *
+ * Used both by Treeherder and Logviewer
+ * at present, so receive global status.
+ */
+
+#notification-box {
+  position: fixed;
+  top: 105px;
+  left: 10px;
+  z-index: 1100;
+}
+
+#notification-box div.alert {
+  padding: 10px 16px 10px 10px;
+  margin-bottom: 5px;
+}
+
+#notification-box button.close {
+  color: inherit;
+  line-height: 13px;
+  font-size: 18px;
+  padding-left: 10px;
+  margin-right: -7px;
+}
+
+/* Notification icon */
+#notification-box div span:first-child {
+  display: inline-block;
+  width: 22px;
+}
+
+strong {
+  font-weight: bold;
+}
+
+#details-panel {
+  font-size: 12px;
+  height: 100%;
+}
+
+.details-panel-slide {
+  animation: details-panel-slide 0.4s;
+  height: 100%;
+}
+
+@keyframes details-panel-slide {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+div#details-panel-content .navbar,
+div#tabs-panel .tab-headers {
+  border-radius: 0;
+  height: 33px;
+  width: 100%;
+  margin: 0;
+  font-size: 12px;
+  min-height: 33px;
+  min-width: initial;
+  z-index: 100;
+  background-color: #252c33;
+  border: 1px solid transparent;
+  color: #ced3d9;
+  justify-content: space-between;
+}
+
+#tab-header-buttons > span > svg {
+  margin-left: 5px;
+}
+
+div#details-panel-content .actionbar-nav > li > a.disabled,
+div#details-panel-content .actionbar-nav > li > button.disabled,
+ul.actionbar-menu > li > .disabled {
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+div#details-panel-content .details-panel-navbar > ul.tab-headers > li {
+  border-right: 1px solid #42484f;
+}
+
+.details-panel-navbar {
+  background-color: #252c33;
+  border: 1px solid transparent;
+  color: #ced3d9;
+  display: flex;
+  flex-direction: row;
+  z-index: 100;
+  height: 33px;
+}
+
+.details-panel-navbar li {
+  align-self: center;
+}
+
+.tab-header-tabs {
+  flex-direction: row;
+  display: flex;
+}
+
+.tab-header-tabs > li {
+  padding: 1px 15px;
+  line-height: 30px;
+  cursor: pointer;
+  color: #9fa3a5;
+}
+
+#details-panel-content ul.tab-headers {
+  list-style: none;
+  flex-direction: row;
+  min-width: 550px;
+  display: flex;
+  padding-left: 0;
+  font-size: 12px;
+}
+
+.details-panel-close-btn {
+  padding-top: 3px;
+  font-size: 12px;
+  color: unset; /* reset from bootstrap button class */
+}
+
+.details-panel-close-btn:hover {
+  color: unset; /* reset from bootstrap button class */
+}
+
+.perf-job-selected {
+  /* An override to optimize all other non-perf jobs at 550px */
+  min-width: 646px !important;
+}
+
+.details-panel-navbar .actionbar-nav > li > a,
+.details-panel-navbar .actionbar-nav > li > .btn {
+  color: #9fa3a5;
+  padding: 4px 15px;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+div#details-panel-content .actionbar-nav > li > a:hover,
+div#details-panel-content .actionbar-nav > li > a:focus,
+div#details-panel-content .actionbar-nav > li > button:hover,
+div#details-panel-content .actionbar-nav > li > button:focus {
+  background-color: #1e252b;
+  color: #d3d8da;
+}
+
+.details-panel-navbar .actionbar-nav {
+  flex: auto;
+}
+
+.tab-header-tabs > li.selected-tab {
+  background-color: #1a4666;
+  color: #eef0f2;
+}
+
+.react-tabs {
+  height: 100%;
+  width: 100%;
+}
+
+.react-tabs__tab-panel--selected {
+  height: 100%;
+}
+
+#tabs-panel {
+  height: 100%;
+  max-height: calc(100% - 35px);
+  width: 100%;
+}
+
+#details-panel-content #job-details-list,
+#details-panel-content .failure-summary-list,
+#details-panel-content .similar-jobs > .similar-job-list tbody {
+  overflow-y: auto;
+  height: 100%;
+}
+
+#details-panel-content {
+  position: relative; /* So we can absolutely position the loading overlay */
+  height: 100%;
+  flex: auto;
+  display: flex;
+  flex-flow: row;
+}
+
+#job-details-actionbar {
+  min-height: 33px;
+}
+
+/*
+ * action bar
+ */
+
+.actionbar-nav-btn {
+  cursor: pointer;
+  padding: 5px 15px;
+  color: #9fa3a5;
+}
+
+.actionbar-nav-btn.disabled {
+  cursor: not-allowed;
+}
+
+.action-bar-spin {
+  animation: action-bar-spin 0.7s;
+}
+
+@keyframes action-bar-spin {
+  0% {
+    transform: rotate(0turn);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+/*
+ * Job details panel (left side)
+ */
+
+#summary-panel {
+  width: 310px;
+  min-width: 310px;
+}
+
+/*
+ * Classification stars
+ * These generally match the job button colors
+ */
+
+.star-success {
+  color: rgba(2, 130, 51, 0.75);
+}
+
+.star-testfailed {
+  color: #dd6602;
+}
+
+.star-busted {
+  color: #90010a;
+}
+
+.star-skipped {
+  color: rgb(101, 191, 221);
+}
+
+.star-exception {
+  color: #6f0296;
+}
+
+.star-retry {
+  color: #283aa2;
+}
+
+.star-unknown {
+  color: #fbd890;
+}
+
+.star-usercancel {
+  color: #ff40d9;
+}
+.star-superseded {
+  color: #488ae9;
+}
+
+.star-pending,
+.star-running {
+  color: grey;
+}
+
+#summary-panel em.testfail {
+  color: red;
+}
+
+#job-details-pane ul {
+  margin: 0;
+  padding: 0;
+  line-height: 12px;
+}
+
+#job-details-pane {
+  overflow: auto;
+}
+
+#result-status-pane {
+  width: 100%;
+  padding: 4px;
+}
+
+#result-status-pane div {
+  display: inline-block;
+}
+
+#result-status-pane div:first-child {
+  width: 11.25em;
+}
+
+/*
+ * Job tabs panel (right side)
+ */
+
+.job-tabs-divider {
+  border-left: 1px solid lightgrey;
+}
+
+#job-details-list label {
+  margin-left: 2px;
+}
+
+/*
+ * Failure summary
+ */
+
+ul.failure-summary-list {
+  width: 100%;
+  margin-bottom: 0;
+  height: 100%;
+}
+
+ul.failure-summary-list li {
+  font-size: 11px;
+  background: #ccfaff;
+  padding: 1px 0 0 2px;
+}
+
+ul.failure-summary-list li .btn-xs {
+  font-size: 8px;
+}
+
+.failure-summary-line-empty {
+  padding: 2px 4px 0;
+  font-size: 12px;
+  background: #ffffff;
+}
+
+.failure-summary-bugs {
+  padding: 0 0 0 18px;
+}
+
+/* We override global anchor color to replicate TBPL here */
+.failure-summary-bugs a {
+  color: #0000ee;
+}
+
+.failure-summary-bugs a:visited {
+  color: purple;
+}
+
+/* We override global anchor color to replicate TBPL here */
+.show-hide-more {
+  font-size: 11px;
+  padding: 0 0 0 37px;
+  color: #0000ee;
+  cursor: pointer;
+}
+
+/*
+ * Annotations
+ */
+
+annotations-tab {
+  overflow: auto;
+  margin-right: 0;
+}
+
+.classifications-pane {
+  border-right: solid 1px lightgray;
+}
+
+/* Annotation tab classification headers */
+.classifications-pane table tr th {
+  padding-right: 16px;
+  padding-bottom: 4px;
+}
+
+/* Annotation tab classification fields */
+.classifications-pane table tr td {
+  padding-right: 16px;
+}
+
+/* Annotations tab classification deletion container */
+.classifications-pane table tr td:last-child {
+  padding-left: 10px;
+}
+
+.classification-delete-icon {
+  font-size: 11px;
+  color: #bababa;
+}
+
+/* Override bootstrap row highlighting */
+.classifications-pane table tr:hover td {
+  background: #fff;
+}
+
+.annotations-bug-list {
+  list-style: none inside none;
+  padding-left: 0;
+}
+
+.annotations-bug-header {
+  margin-top: 4px;
+  margin-bottom: 2px;
+  font-size: 0.9em;
+}
+
+.annotations-bug {
+  padding-top: 2px;
+  padding-bottom: 0;
+  padding-left: 0;
+  border: none;
+  font-size: 0.9em;
+}
+
+/*
+ * Similar jobs
+ */
+
+.btn-similar-jobs {
+  background: #fff;
+  cursor: default;
+  font-size: 12px;
+}
+
+.similar-jobs {
+  display: flex;
+  flex-flow: row;
+  height: 100%;
+}
+
+div.similar-jobs .similar-job-detail-panel {
+  border-left: 1px solid #101010;
+  margin-right: 1px;
+  overflow-y: auto;
+  flex: 1 1;
+}
+
+div.similar-jobs .similar-job-detail-panel form {
+  overflow: hidden;
+  background-color: #d3d3d3;
+}
+
+div.similar-jobs
+  .similar-job-detail-panel
+  form
+  .checkbox
+  input[type='checkbox'] {
+  margin-left: 0;
+  position: relative;
+}
+
+div.similar-jobs .similar-job-detail-panel .similar_job_detail {
+  border-top: 1px solid #101010;
+}
+
+div.similar-jobs .similar-job-detail-panel .similar_job_detail table {
+  width: 100%;
+  overflow: hidden;
+}
+
+div.similar-jobs .similar-job-list {
+  overflow: auto;
+  flex: 1 1;
+}
+
+div.similar-jobs .similar-job-list table {
+  margin-bottom: 7px;
+}
+
+/* We override bootstrap table style for cleaner layout */
+div.similar-jobs .similar-job-list table tr > td {
+  vertical-align: middle;
+  border-top: 1px solid lightgrey;
+  border-bottom: 0;
+  border-right: 0;
+  border-left: 0;
+}
+
+/* Selected Similar Job row in blue */
+div.similar-jobs .similar-job-list table tr.active > td {
+  background: #e2ebfa;
+  border-top: 1px solid darkgrey;
+  border-bottom: 1px solid darkgrey;
+}
+
+/* Avoid using the hand pointer unless we are on a link */
+div.similar-jobs .similar-job-list table tr {
+  cursor: default;
+}
+
+/*
+ * Performance
+ */
+
+div.performance-panel {
+  display: block !important;
+}
+
+/*
+ * Common job, group and count styling
+ */
+
+.job-group {
+  margin: 0;
+  cursor: default;
+}
+
+.job-btn {
+  background: transparent;
+  padding: 0 2px 0 2px;
+  vertical-align: 0;
+  line-height: 1.32;
+  display: none;
+  transition: transform 0.1s;
+  font-size: 12px;
+}
+
+.group-btn {
+  background: transparent;
+  padding: 0 2px 0 2px;
+  vertical-align: 0;
+  line-height: 1.32;
+  cursor: pointer;
+}
+
+.group-btn::before {
+  content: '+';
+}
+
+.group-btn.btn.job-group-count:hover {
+  background-color: rgba(219, 235, 252, 0.51);
+}
+
+.group-symbol {
+  background: transparent;
+  padding: 0 2px 0 2px;
+  border: 0;
+  vertical-align: 0;
+  line-height: 1.32;
+  cursor: pointer;
+  margin-right: -3px;
+}
+
+.group-symbol:hover {
+  cursor: pointer;
+}
+
+.group-content {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.group-content::before {
+  content: '(';
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.group-content::after {
+  content: ')';
+  margin-right: 2px;
+  padding-left: 2px;
+}
+
+.group-job-list {
+  margin-left: -3px;
+  white-space: normal;
+}
+
+.runnable-job-btn {
+  display: none;
+  color: rgba(128, 128, 0, 0.5);
+  margin: 0 -2px 0 -1px;
+  background: transparent;
+  padding: 0 2px;
+  vertical-align: 0;
+  line-height: 1.32;
+  font-size: 12px;
+  border-radius: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.runnable-job-btn-selected {
+  border: 1px solid;
+  padding: 0 -1px;
+  border-radius: 3px;
+  margin: 0 -2px 1px 0;
+  overflow: visible;
+}
+
+.selected-job {
+  border: 4px solid;
+  background-color: #fff;
+}
+
+.selected-count {
+  background-color: #ffffffb3;
+}
+
+.btn-lg-xform {
+  margin: -2px 0px !important;
+  border: 2px solid;
+  border-radius: 3px;
+  font-size: 12px;
+  z-index: 1;
+  transition: 0.1s;
+  transform: scale(1.3, 1.3);
+}
+
+.btn-lg-xform:hover {
+  opacity: 0.9;
+}
+
+.filter-shown {
+  display: inline-block;
+}
+
+/*
+ * Job button colors and classification states
+ */
+
+.job-btn.btn-dkgray,
+.job-btn.btn-ltgray,
+.job-btn.btn-green,
+.job-btn.btn-dkblue,
+.job-btn.btn-ltblue,
+.job-btn.btn-yellow,
+.job-btn.btn-pink,
+.job-btn.btn-dkgray-classified,
+.job-btn.btn-ltgray-classified,
+.job-btn.btn-green-classified,
+.job-btn.btn-dkblue-classified,
+.job-btn.btn-ltblue-classified,
+.job-btn.btn-yellow-classified,
+.job-btn.btn-pink-classified,
+.job-btn.btn-red-classified,
+.job-btn.btn-orange-classified,
+.job-btn.btn-purple-classified,
+.group-btn.btn-dkgray-count,
+.group-btn.btn-ltgray-count,
+.group-btn.btn-green-count,
+.group-btn.btn-dkblue-count,
+.group-btn.btn-ltblue-count,
+.group-btn.btn-yellow-count,
+.group-btn.btn-pink-count {
+  margin: 0 -2px 0 0;
+}
+
+.job-btn.btn-red,
+.job-btn.btn-orange,
+.job-btn.btn-yellow,
+.job-btn.btn-purple {
+  margin: 0 -1px 1px 1px;
+}
+
+.classified-icon {
+  font-size: 0.62em;
+  vertical-align: super;
+}
+
+/* Bold buttons */
+
+.btn-green,
+.btn-orange,
+.btn-purple,
+.btn-red,
+.btn-dkblue,
+.btn-pink,
+.btn-yellow,
+.btn-ltblue {
+  font-weight: bold;
+}
+
+/* Orange, testfailed */
+.btn-orange {
+  background-color: #f7c194;
+  color: #743603;
+}
+.btn-orange:hover,
+.btn-orange:focus,
+.btn-orange:active,
+.btn-orange.active {
+  background-color: #c15700;
+  color: white;
+}
+.btn-orange.disabled:hover,
+.btn-orange.disabled:focus,
+.btn-orange.disabled:active,
+.btn-orange.disabled.active,
+.btn-orange:disabled:hover,
+.btn-orange:disabled:focus,
+.btn-orange:disabled:active,
+.btn-orange:disabled.active,
+fieldset[disabled] .btn-orange:hover,
+fieldset[disabled] .btn-orange:focus,
+fieldset[disabled] .btn-orange:active,
+fieldset[disabled] .btn-orange.active {
+  background-color: #dd6602;
+  border-color: #dd6602;
+}
+
+/* Orange, testfailed classified */
+.btn-orange-classified,
+.btn-orange-classified-count {
+  color: #b45303;
+}
+.btn-orange-classified:hover,
+.btn-orange-classified:focus,
+.btn-orange-classified:active,
+.btn-orange-classified.active {
+  background-color: #b45303;
+  border-color: #aa4f02;
+  color: white;
+}
+.btn-orange-classified-count:hover {
+  color: #aa4f02;
+}
+.btn-orange-classified.disabled:hover,
+.btn-orange-classified.disabled:focus,
+.btn-orange-classified.disabled:active,
+.btn-orange-classified.disabled.active,
+.btn-orange-classified:disabled:hover,
+.btn-orange-classified:disabled:focus,
+.btn-orange-classified:disabled:active,
+.btn-orange-classified:disabled.active,
+fieldset[disabled] .btn-orange-classified:hover,
+fieldset[disabled] .btn-orange-classified:focus,
+fieldset[disabled] .btn-orange-classified:active,
+fieldset[disabled] .btn-orange-classified.active {
+  background-color: #dd6602;
+  border-color: #dd6602;
+}
+
+/* Red, busted */
+.btn-red {
+  background-color: #b74c4c;
+  color: white;
+}
+.btn-red:hover,
+.btn-red:focus,
+.btn-red:active,
+.btn-red.active {
+  background-color: #a1020e;
+  color: white;
+}
+.btn-red.disabled:hover,
+.btn-red.disabled:focus,
+.btn-red.disabled:active,
+.btn-red.disabled.active,
+.btn-red:disabled:hover,
+.btn-red:disabled:focus,
+.btn-red:disabled:active,
+.btn-red:disabled.active,
+fieldset[disabled] .btn-red:hover,
+fieldset[disabled] .btn-red:focus,
+fieldset[disabled] .btn-red:active,
+fieldset[disabled] .btn-red.active {
+  background-color: #c2020e;
+  border-color: #c2020e;
+}
+
+/* Red, busted classified */
+.btn-red-classified,
+.btn-red-classified-count,
+.btn-red-classified-count:hover {
+  color: #90010a;
+}
+.btn-red-classified:hover,
+.btn-red-classified:focus,
+.btn-red-classified:active,
+.btn-red-classified.active {
+  background-color: #a9020c;
+  border-color: #90010a;
+  color: white;
+}
+.btn-red-classified.disabled:hover,
+.btn-red-classified.disabled:focus,
+.btn-red-classified.disabled:active,
+.btn-red-classified.disabled.active,
+.btn-red-classified:disabled:hover,
+.btn-red-classified:disabled:focus,
+.btn-red-classified:disabled:active,
+.btn-red-classified:disabled.active,
+fieldset[disabled] .btn-red-classified:hover,
+fieldset[disabled] .btn-red-classified:focus,
+fieldset[disabled] .btn-red-classified:active,
+fieldset[disabled] .btn-red-classified.active {
+  background-color: #c2020e;
+  border-color: #c2020e;
+  color: white;
+}
+
+/* Dark blue, retry */
+.btn-dkblue,
+.btn-dkblue-count,
+.btn-dkblue-classified,
+.btn-dkblue-classified-count,
+.btn-dkblue-count:hover,
+.btn-dkblue-classified-count:hover {
+  color: #283aa2;
+}
+.btn-dkblue:hover,
+.btn-dkblue-classified:hover,
+.btn-dkblue:focus,
+.btn-dkblue:active,
+.btn-dkblue.active {
+  border-color: #263fc3;
+  background-color: #263fc3;
+  color: white;
+  font-weight: bold;
+}
+.btn-dkblue.disabled:hover,
+.btn-dkblue.disabled:focus,
+.btn-dkblue.disabled:active,
+.btn-dkblue.disabled.active,
+.btn-dkblue:disabled:hover,
+.btn-dkblue:disabled:focus,
+.btn-dkblue:disabled:active,
+.btn-dkblue:disabled.active,
+fieldset[disabled] .btn-dkblue:hover,
+fieldset[disabled] .btn-dkblue:focus,
+fieldset[disabled] .btn-dkblue:active,
+fieldset[disabled] .btn-dkblue.active {
+  background-color: #2d48d6;
+  border-color: #2d48d6;
+}
+
+/* Green, success */
+.btn-green,
+.btn-green-count,
+.btn-green-classified,
+.btn-green-classified-count,
+.btn-green-count:hover,
+.btn-green-classified-count:hover {
+  color: rgba(2, 130, 51, 0.95);
+  font-weight: bold;
+}
+.btn-green:hover,
+.btn-green-classified:hover,
+.btn-green:focus,
+.btn-green:active,
+.btn-green.active {
+  border-color: #019029;
+  background-color: #017722;
+  color: white;
+}
+.btn-green.disabled:hover,
+.btn-green.disabled:focus,
+.btn-green.disabled:active,
+.btn-green.disabled.active,
+.btn-green:disabled:hover,
+.btn-green:disabled:focus,
+.btn-green:disabled:active,
+.btn-green:disabled.active,
+fieldset[disabled] .btn-green:hover,
+fieldset[disabled] .btn-green:focus,
+fieldset[disabled] .btn-green:active,
+fieldset[disabled] .btn-green.active {
+  border-color: #02c238;
+}
+
+/* Purple, infrastructure exception */
+.btn-purple {
+  background-color: #9a7da6;
+  color: #3a004d;
+}
+.btn-purple:hover,
+.btn-purple:focus,
+.btn-purple:active,
+.btn-purple.active {
+  background-color: #3a004d;
+  color: white;
+}
+.btn-purple.disabled:hover,
+.btn-purple.disabled:focus,
+.btn-purple.disabled:active,
+.btn-purple.disabled.active,
+.btn-purple:disabled:hover,
+.btn-purple:disabled:focus,
+.btn-purple:disabled:active,
+.btn-purple:disabled.active,
+fieldset[disabled] .btn-purple:hover,
+fieldset[disabled] .btn-purple:focus,
+fieldset[disabled] .btn-purple:active,
+fieldset[disabled] .btn-purple.active {
+  background-color: #9002c2;
+  border-color: #9002c2;
+  color: white;
+}
+
+/* Purple, infrastructure exception classified */
+.btn-purple-classified,
+.btn-purple-classified-count,
+.btn-purple-classified-count:hover {
+  color: #6f0296;
+}
+.btn-purple-classified:hover,
+.btn-purple-classified:focus,
+.btn-purple-classified:active,
+.btn-purple-classified.active {
+  background-color: #7d02a9;
+  border-color: #6b0190;
+  color: white;
+}
+.btn-purple-classified.disabled:hover,
+.btn-purple-classified.disabled:focus,
+.btn-purple-classified.disabled:active,
+.btn-purple-classified.disabled.active,
+.btn-purple-classified:disabled:hover,
+.btn-purple-classified:disabled:focus,
+.btn-purple-classified:disabled:active,
+.btn-purple-classified:disabled.active,
+fieldset[disabled] .btn-purple-classified:hover,
+fieldset[disabled] .btn-purple-classified:focus,
+fieldset[disabled] .btn-purple-classified:active,
+fieldset[disabled] .btn-purple-classified.active {
+  background-color: #9002c2;
+  border-color: #9002c2;
+  color: white;
+}
+
+/* Light blue, superseded */
+.btn-ltblue,
+.btn-ltblue-count,
+.btn-ltblue-classified,
+.btn-ltblue-classified-count,
+.btn-ltblue-count:hover,
+.btn-ltblue-classified-count:hover {
+  color: #3f77c6;
+}
+.btn-ltblue:hover,
+.btn-ltblue-classified:hover,
+.btn-ltblue:focus,
+.btn-ltblue:active,
+.btn-ltblue.active {
+  border-color: #3f77c6;
+  background-color: #3f77c6;
+  color: white;
+}
+.btn-ltblue.disabled:hover,
+.btn-ltblue.disabled:focus,
+.btn-ltblue.disabled:active,
+.btn-ltblue.disabled.active,
+.btn-ltblue:disabled:hover,
+.btn-ltblue:disabled:focus,
+.btn-ltblue:disabled:active,
+.btn-ltblue:disabled.active,
+fieldset[disabled] .btn-ltblue:hover,
+fieldset[disabled] .btn-ltblue:focus,
+fieldset[disabled] .btn-ltblue:active,
+fieldset[disabled] .btn-ltblue.active {
+  border-color: #81b8ed;
+}
+
+/* Light gray, pending */
+.btn-ltgray,
+.btn-ltgray-count,
+.btn-ltgray-classified,
+.btn-ltgray-classified-count {
+  color: #757575;
+}
+.btn-ltgray-count:hover,
+.btn-ltgray-classified-count:hover {
+  color: #808080;
+}
+.btn-ltgray:hover,
+.btn-ltgray-classified:hover,
+.btn-ltgray:focus,
+.btn-ltgray:active,
+.btn-ltgray.active {
+  border-color: #808080;
+  color: #808080;
+}
+.btn-ltgray.disabled:hover,
+.btn-ltgray.disabled:focus,
+.btn-ltgray.disabled:active,
+.btn-ltgray.disabled.active,
+.btn-ltgray:disabled:hover,
+.btn-ltgray:disabled:focus,
+.btn-ltgray:disabled:active,
+.btn-ltgray:disabled.active,
+fieldset[disabled] .btn-ltgray:hover,
+fieldset[disabled] .btn-ltgray:focus,
+fieldset[disabled] .btn-ltgray:active,
+fieldset[disabled] .btn-ltgray.active {
+  color: #e0e0e0;
+  border-color: #e0e0e0;
+}
+
+/* Mid gray (presently unused) */
+.btn-mdgray,
+.btn-mdgray-count,
+.btn-mdgray-classified,
+.btn-mdgray-classified-count,
+.btn-mdgray-count:hover,
+.btn-mdgray-classified-count:hover {
+  background-color: #bfbfbf;
+  border-color: #bfbfbf;
+}
+.btn-mdgray:hover,
+.btn-mdgray-classified:hover,
+.btn-mdgray:focus,
+.btn-mdgray:active,
+.btn-mdgray.active {
+  background-color: #b2b2b2;
+  border-color: #a6a6a6;
+}
+.btn-mdgray.disabled:hover,
+.btn-mdgray.disabled:focus,
+.btn-mdgray.disabled:active,
+.btn-mdgray.disabled.active,
+.btn-mdgray:disabled:hover,
+.btn-mdgray:disabled:focus,
+.btn-mdgray:disabled:active,
+.btn-mdgray:disabled.active,
+fieldset[disabled] .btn-mdgray:hover,
+fieldset[disabled] .btn-mdgray:focus,
+fieldset[disabled] .btn-mdgray:active,
+fieldset[disabled] .btn-mdgray.active {
+  background-color: #bfbfbf;
+  border-color: #bfbfbf;
+}
+
+/* Dark gray, running */
+.btn-dkgray,
+.btn-dkgray-count,
+.btn-dkgray-classified,
+.btn-dkgray-classified-count,
+.btn-dkgray-count:hover,
+.btn-dkgray-classified-count:hover {
+  color: black;
+}
+.btn-dkgray:hover,
+.btn-dkgray-classified:hover,
+.btn-dkgray:focus,
+.btn-dkgray:active,
+.btn-dkgray.active {
+  background-color: black;
+  border-color: black;
+  color: white;
+}
+.btn-dkgray.disabled:hover,
+.btn-dkgray.disabled:focus,
+.btn-dkgray.disabled:active,
+.btn-dkgray.disabled.active,
+.btn-dkgray:disabled:hover,
+.btn-dkgray:disabled:focus,
+.btn-dkgray:disabled:active,
+.btn-dkgray:disabled.active,
+fieldset[disabled] .btn-dkgray:hover,
+fieldset[disabled] .btn-dkgray:focus,
+fieldset[disabled] .btn-dkgray:active,
+fieldset[disabled] .btn-dkgray.active {
+  background-color: #7c7a7d;
+  border-color: #7c7a7d;
+  color: white;
+}
+
+/* Yellow, unknown */
+.btn-yellow,
+.btn-yellow-count,
+.btn-yellow-classified,
+.btn-yellow-classified-count {
+  background-color: #fcf8e3;
+  border-color: #fbd890;
+  color: #8a6d3b;
+}
+.btn-yellow-count:hover,
+.btn-yellow-classified-count:hover {
+  color: #8a6d3b;
+}
+.btn-yellow:hover,
+.btn-yellow-classified:hover,
+.btn-yellow:focus,
+.btn-yellow:active,
+.btn-yellow.active {
+  background-color: #8a6d3b;
+  border-color: #fbd890;
+  color: #fcf8e3;
+}
+.btn-yellow.disabled:hover,
+.btn-yellow.disabled:focus,
+.btn-yellow.disabled:active,
+.btn-yellow.disabled.active,
+.btn-yellow:disabled:hover,
+.btn-yellow:disabled:focus,
+.btn-yellow:disabled:active,
+.btn-yellow:disabled.active,
+fieldset[disabled] .btn-yellow:hover,
+fieldset[disabled] .btn-yellow:focus,
+fieldset[disabled] .btn-yellow:active,
+fieldset[disabled] .btn-yellow.active {
+  background-color: #fcf8e3;
+  border-color: #fbd890;
+}
+
+/* Pink, cancelled */
+.btn-pink,
+.btn-pink-count,
+.btn-pink-classified,
+.btn-pink-classified-count,
+.btn-pink-count:hover,
+.btn-pink-classified-count:hover {
+  color: #cf2b9f;
+}
+.btn-pink:hover,
+.btn-pink-classified:hover,
+.btn-pink:focus,
+.btn-pink:active,
+.btn-pink.active {
+  background-color: #cf2b9f;
+  border-color: #cf2b9f;
+  color: white;
+}
+.btn-pink.disabled:hover,
+.btn-pink.disabled:focus,
+.btn-pink.disabled:active,
+.btn-pink.disabled.active,
+.btn-pink:disabled:hover,
+.btn-pink:disabled:focus,
+.btn-pink:disabled:active,
+.btn-pink:disabled.active,
+fieldset[disabled] .btn-pink:hover,
+fieldset[disabled] .btn-pink:focus,
+fieldset[disabled] .btn-pink:active,
+fieldset[disabled] .btn-pink.active {
+  background-color: #ff80e5;
+  border-color: #ff80e5;
+}
+
+/*
+ * Resultset bar
+ */
+
+.push-bar {
+  border-top: 1px solid black;
+  padding: 2px 0 1px 34px;
+  white-space: nowrap;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.push-left {
+  display: flex;
+  flex-flow: row wrap;
+  flex: auto;
+  align-items: center;
+}
+
+.push-title-left {
+  flex: 0 0 24.2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.push-body-divider {
+  margin-left: 34px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.push-body {
+  padding-left: 15px;
+  padding-right: 25px;
+}
+
+.push {
+  padding-bottom: 0;
+  margin-left: 0;
+  margin-top: 2px;
+  white-space: normal;
+  width: 100%;
+}
+
+.push-counts {
+  flex: none;
+  padding-right: 10px;
+}
+
+.push-health .badge.badge-success {
+  background-color: #1b7e32;
+}
+
+.push-progress {
+  color: #6f6d70;
+  font-style: italic;
+  margin-left: 10px;
+}
+
+.push-buttons {
+  margin-right: 25px;
+}
+
+.push-buttons > .btn,
+.push-buttons > .btn-group {
+  margin: 0 5px;
+}
+
+.btn-push {
+  color: #666;
+  background-color: transparent;
+  padding-left: 9px;
+  padding-right: 10px;
+  border: 0;
+}
+
+.btn-push:hover {
+  background-color: #6f6d70;
+  color: white;
+}
+
+.btn-push.disabled:hover,
+.btn-push.disabled:active,
+.btn-push.disabled.active,
+.btn-push:disabled:hover,
+.btn-push:disabled:active,
+.btn-push:disabled.active,
+fieldset[disabled] .btn-push:hover {
+  background-color: #7c7a7d;
+  border-color: #7c7a7d;
+  color: white;
+}
+
+.watch-commit-btn:not([data-watch-state='none']) {
+  border: 1px solid;
+  border-radius: 3px;
+  overflow: visible;
+}
+
+/* Encompasses unknown push,repo */
+.unknown-message-body {
+  padding-top: 10px;
+}
+
+.push .job-list-pad {
+  padding-right: 0;
+}
+
+.push .job-list-nopad {
+  padding-left: 20px;
+  padding-right: 0;
+  display: block;
+}
+
+.push .revision-list {
+  padding-left: 15px;
+}
+
+/*
+ * Revision list
+ */
+
+.revision {
+  font-size: 12px;
+}
+
+.revision[data-tags~='backout'] .revision-comment {
+  color: #e20303;
+}
+
+.commit-sha {
+  font-size: 11px;
+}
+
+/*
+ * Job table
+ */
+
+.platform {
+  font-size: 12px;
+  padding: 0 5px 0 0;
+  line-height: 15px;
+  width: 14.5em;
+  min-width: 14.5em;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.job-row {
+  display: table-cell;
+  line-height: 15px;
+  white-space: normal;
+  word-break: normal;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.job-list table {
+  width: 100%;
+}
+
+.job-list table tr {
+  border-bottom: 1px dotted lightgrey;
+}
+
+.job-list table tr:nth-child(even) {
+  background: #f8f8f896;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.get-next {
+  flex-direction: row;
+  font-size: 14px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+}
+
+.get-next > span {
+  align-self: center;
+  padding-right: 8px;
+}
+
+.get-next .btn {
+  font-size: 12px;
+}
+
+#pinboard-btn {
+  margin-top: 0;
+  margin-bottom: 1px;
+  background-color: #e6eef5;
+  color: #252c33;
+  line-height: 22px;
+  cursor: pointer;
+  border-radius: 0;
+  padding: 3px 10px 4px 14px;
+}
+
+.pinboard-btn-text {
+  font-size: 12px;
+}
+
+#pin-count-group {
+  display: inline-block;
+  position: relative;
+  top: -14px;
+  left: -3px;
+  height: 16px;
+  width: 16px;
+  border: 1px solid #2398ff;
+  border-radius: 8px;
+  background: white;
+}
+
+.pin-count-pulse {
+  animation: pin-count-pulse 0.4s;
+}
+
+@keyframes pin-count-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(3);
+  }
+}
+
+.pin-count-text {
+  line-height: 14px;
+  font-size: 9px;
+  font-weight: bold;
+  text-align: center;
+  color: #2398ff;
+}
+
+.pin-count-group-3-digit {
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+}
+
+.pin-count-text-3-digit {
+  line-height: 18px;
+}
+
+#pinboard-contents {
+  background-color: #e6eef5;
+  color: #252c33;
+  flex: auto;
+  display: flex;
+  flex-flow: row;
+  min-height: 100px;
+}
+
+#pinboard-panel .header {
+  padding-left: 2px;
+  height: 18px;
+}
+
+/*
+ * Pinned jobs container
+ */
+
+#pinned-job-list {
+  position: relative;
+  flex: auto;
+  margin: 7px 7px 10px;
+}
+
+#pinned-job-list .content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+  overflow: auto;
+  background-color: #ffffff;
+}
+
+.pinned-job {
+  font-size: 12px;
+  margin-bottom: 2px;
+  padding: 1px 2px;
+  width: 3.5em;
+}
+
+.pinned-job-close-btn {
+  font-size: 12px;
+  padding: 1px 2px 1px 2px;
+  border-color: #fafafa #fafafa #fafafa transparent;
+}
+
+.pinboard-preload-txt {
+  font-size: 12px;
+  color: #bfbfbf;
+}
+
+/*
+ * Related bugs container
+ */
+
+#pinboard-related-bugs {
+  position: relative;
+  width: 200px;
+  flex: none;
+  margin: 7px 7px 10px;
+}
+
+#pinboard-related-bugs .content {
+  position: absolute;
+  height: 100%;
+  width: 200px;
+  padding: 2px;
+  overflow-x: hidden;
+  color: black;
+  background-color: #ffffff;
+}
+
+.add-related-bugs-icon {
+  margin-right: 2px;
+  font-size: 17px;
+  color: #98c3da;
+}
+
+.add-related-bugs-form {
+  position: relative;
+  top: -18px;
+  left: 20px;
+}
+
+.add-related-bugs-input {
+  width: 12em;
+  margin: -3px 0 0 -3px;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.pinboard-related-bug-preload-txt {
+  vertical-align: top;
+}
+
+.pinboard-related-bugs-btn {
+  margin-bottom: -1px;
+}
+
+.pinboard-related-bugs-btn:hover > .related-bugs-link {
+  color: #2a6496;
+  text-decoration: underline;
+}
+
+/*
+ * Classification container
+ */
+
+#pinboard-classification {
+  flex: none;
+  width: 185px;
+  padding: 5px;
+}
+
+.pinboard-label {
+  color: #777;
+}
+
+#pinboard-classification-content {
+  color: black;
+}
+
+#pinboard-classification-content .form-group {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+select#pinboard-classification-select.classification-select,
+select#pinboard-revision-select.classification-select {
+  width: 177px;
+  height: 20px;
+  font-size: 12px;
+  padding: 0;
+}
+
+.add-classification-input {
+  width: 177px;
+  height: 20px;
+  padding: 0 0 0 3px;
+  border-radius: 0;
+  font-size: 12px;
+}
+
+/*
+ * Save container and dropdown menu controls
+ */
+
+#pinboard-controls {
+  flex: none;
+  height: 43px;
+  margin: 20px;
+}
+
+#pinboard-controls .dropdown-menu {
+  z-index: 2000;
+}
+
+#pinboard-controls .save-btn-dropdown {
+  margin-left: -1px;
+  padding-top: 1px;
+  display: inline;
+  width: 24px;
+  float: right;
+}
+
+#pinboard-controls .save-btn {
+  float: left;
+  display: inline;
+  width: 70px;
+}
+
+.save-btn-group {
+  margin-top: -22px;
+}
+
+.save-btn {
+  width: 81px;
+}
+
+.save-btn-dropdown {
+  width: 18px;
+}
+
+.save-btn-dropdown > .caret {
+  margin-left: -4px;
+}
+
+.save-btn-dropdown-menu {
+  right: 0;
+  left: -88px !important;
+  transform: inherit !important;
+  top: 22px !important;
+}
+
+.btn-group + .btn + .save-btn-dropdown {
+  margin-left: -5px;
+}
+
+/*
+ * Intermittent Bug Filer
+ */
+#summaryLength {
+  font-size: large;
+}
+
+#summary:invalid + span {
+  color: red;
+}
+
+/*
+ * Fuzzy runnable job finder
+ */
+
+.fuzzy-modal .modal-body #addJobsGroup option.selected::before {
+  content: '• ';
+  color: red;
+}
+
+div.fuzzybuttons {
+  margin-bottom: 3px;
+}
+
+.fuzzy-modal > div {
+  height: 95vh;
+}
+
+.fuzzy-modal .modal-body #addJobsGroup {
+  height: 30vh;
+}
+
+.fuzzy-modal .modal-body #removeJobsGroup {
+  height: 29vh;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(242, 242, 242, 0.25);
+  z-index: 9999;
+  font-size: 30px;
+}
+
+.overlay > div {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.overlay > div > span,
+.overlay > div > svg {
+  position: absolute;
+  top: 40%;
+  left: 45%;
+}
+
+
+/*# sourceMappingURL=index.0ab72ce6.css.map*/
